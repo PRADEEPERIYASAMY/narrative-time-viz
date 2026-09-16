@@ -1,0 +1,4 @@
+requests>=2.31
+nltk>=3.8
+pytest>=7.4
+PyPDF2>=3.0
