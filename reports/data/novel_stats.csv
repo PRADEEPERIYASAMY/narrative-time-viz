@@ -1,0 +1,101 @@
+filename,title,author,author_gender,author_birth_year,author_death_year,volume_note,year,decade,source,word_count,division_count,chapter_count,volume_count,page_count,sentence_count,avg_sentence_words,min_sentence_words,max_sentence_words
+1800.txt,Castle Rackrent,Maria Edgeworth,F,1768,1849,,1800,1800-1809,Project Gutenberg,35640,2,2,0,0,841,42.38,1,264
+1802.txt,"Stella of the North, or the Foundling of the Ship",Helen Craik,F,1750,1825,,1802,1800-1809,Chawton House Collection online,181141,93,93,0,0,4295,42.18,1,284
+1803.txt,Thaddeus of Warsaw,Jane Porter,F,1776,1850,,1803,1800-1809,Project Gutenberg,177473,45,45,0,0,7711,23.02,1,197
+1804.txt,"Adeline Mowbray or, The Mother and Daughter",Amelia Alderson Opie,F,1769,1853,,1804,1800-1809,Project Gutenberg,106070,29,29,0,0,3808,27.86,1,190
+1805.txt,"Fleetwood: Or, The New Man Of Feeling",William Godwin,M,1756,1836,,1805,1800-1809,public-library-UK,137929,57,54,3,934,6524,21.14,1,135
+1807.txt,"Drelincourt and Rodalvi; or, Memoirs of Two Nobel Families",Elizabeth (Byron) Strutt,F,1782,1867,,1807,1800-1809,Chawton House Collection online,121849,52,49,3,221,2456,49.61,1,447
+1808.txt,The Adventures of Ulysses,Charles Lamb,M,1775,1834,,1808,1800-1809,Project Gutenberg,33142,10,10,0,0,874,37.92,1,225
+1809.txt,THE CORINNA OF ENGLAND.,Anna Maria Mackenzie,F,,1816,,1809,1800-1809,Chawton House Collection online,57996,29,27,2,55,2109,27.51,1,224
+1810.txt,Romance Readers and Romance Writers: a Satirical Novel,Sarah Green,F,1763,1825,,1810,1810-1819,Chawton House Collection online,101942,29,26,3,188,2647,38.55,1,255
+1811.txt,Self-control,Mary Brunton,F,1778,1818,,1811,1810-1819,Project Gutenberg,184143,34,34,0,0,7659,24.05,1,126
+1811a.txt,The Missionary; vol. I. An Indian Tale,Lady Sidney Morgan,F,1781,1859,,1811,1810-1819,Project Gutenberg,24956,7,7,0,0,567,44.01,1,306
+1812.txt,"The Loyalists, Vol. 1-3, An Historical Novel",Jane West,F,1758,1852,,1812,1810-1819,Project Gutenberg,148421,31,28,3,0,4882,30.41,1,233
+1813.txt,PRIDE AND PREJUDICE: A NOVEL. IN THREE VOLUMES.,Jane Austen,F,1775,1817,,1813,1810-1819,Project Gutenberg,121484,61,61,0,0,5975,20.33,1,176
+1813a.txt,The Heroine,Eaton Stannard Barrett,M,1786,1829,,1813,1810-1819,Project Gutenberg,101259,50,49,1,0,6332,15.99,1,127
+1814.txt,"The Wanderer (Volume 1 of 5) or, Female Difficulties",Fanny Burney,F,1752,1840,Volume I only,1813,1810-1819,Project Gutenberg,70423,20,19,1,0,2981,23.63,1,185
+1816.txt,"The Antiquary, Complete",Sir Walter Scott,M,1771,1832,,1816,1810-1819,Project Gutenberg,167350,47,45,2,0,3828,43.72,1,323
+1817.txt,Villasantelle; or the Curious Impediment,Catherine Selden,F,1775,,,1817,1810-1819,Chawton House,58155,0,0,0,0,1315,44.22,1,197
+1818.txt,Marriage,Susan Edmonstone Ferrier,F,1782,1854,,1818,1810-1819,Project Gutenberg,145201,70,68,2,0,6286,23.1,1,147
+1819.txt,Any Thing But What You Expect,Jane Harvey,F,1771,1848,,1819,1810-1819,Chawton House,123312,29,26,3,0,963,128.05,1,1242
+1819a.txt,The Vampyre; A Tale,John William Polidori,M,1795,1821,,1819,1810-1819,Project Gutenberg,12608,1,1,0,0,354,35.63,1,158
+1820.txt,Melmoth the Wanderer Vol. 1 (of 4),Charles Robert Maturin,M,1782,1824,Volume I only,1820,1820-1829,Project Gutenberg,56002,6,6,0,0,1664,33.66,1,329
+1822.txt,The Provost,John Galt,M,1779,1839,,1822,1820-1829,Project Gutenberg,55023,48,48,0,0,1045,52.65,1,255
+1822a.txt,"The Three Perils of Man, Vol. 1 (of 3) or, War, Women, and Witchcraft",James Hogg,M,1770,1835,Volume I only,1822,1820-1829,Project Gutenberg,63083,13,12,1,0,2639,23.91,1,121
+1823.txt,Isabella. A Novel,Frances Jacson,F,1754,1842,,1823,1820-1829,Project Gutenberg,152240,59,56,3,0,6269,24.29,1,182
+1824.txt,Theresa Marchmont,Mrs Charles Gore,F,1799,1861,,1824,1820-1829,Project Gutenberg,15854,4,4,0,0,403,39.34,1,211
+1824a.txt,The Adventures of Hajji Baba of Ispahan,James Morier,M,1780,1849,,1824,1820-1829,Project Gutenberg,177821,81,81,0,87,5035,35.32,1,468
+1825.txt,"Richelieu, v. 1/3 A Tale of France",G. P. R. James,M,1799,1869,,1825,1820-1829,Project Gutenberg,51547,12,12,0,0,1871,27.55,1,164
+1826.txt,The Last Man,Mary W. Shelley,F,1797,1851,,1826,1820-1829,Project Gutenberg,174589,33,30,3,50,6897,25.32,1,150
+1827.txt,The Mummy!,Jane C. Loudon,F,1807,1858,,1827,1820-1829,Project Gutenberg,161007,31,31,0,0,5275,30.52,1,277
+1827a.txt,The Epicurean,Thomas Moore,M,1779,1852,,1827,1820-1829,Project Gutenberg,54211,20,20,0,0,1459,37.16,1,238
+1828.txt,"Penelope: or, Love's Labour Lost,  Vol. 2 (of 3)",William Pitt Scargill,M,1787,1836,Volume II only,1828,1820-1829,Project Gutenberg,52774,19,19,0,0,1896,27.83,1,132
+1830.txt,"Paul Clifford, Complete",Edward Bulwer-Lytton,M,1803,1873,,1830,1830-1839,Project Gutenberg,172315,35,35,0,0,5704,30.21,1,259
+1831.txt,Crotchet Castle,Thomas Love Peacock,M,1785,1866,,1831,1830-1839,Project Gutenberg,36390,19,19,0,0,1993,18.26,1,183
+1833.txt,Tom Cringle’s Log,Michael Scott,M,1789,1835,,1833,1830-1839,Project Gutenberg,231445,19,19,0,0,6001,38.57,1,378
+1835.txt,Shanty the Blacksmith; A Tale of Other Times,Mrs. Sherwood <AKA: Mrs. Mary Martha Sherwood>,F,1775,1851,,1835,1830-1839,Project Gutenberg,31960,0,0,0,0,893,35.79,1,210
+1836.txt,Mr. Midshipman Easy,Captain Frederick Marryat,M,1792,1848,,1836,1830-1839,Project Gutenberg,138303,41,41,0,0,6131,22.56,1,183
+1836a.txt,Sartor Resartus: The Life and Opinions of Herr Teufelsdrockh,Thomas Carlyle,M,1795,1881,Serial publication 1833-1834; novel 1836,1836,1830-1839,Project Gutenberg,77824,36,33,3,0,2506,31.06,1,183
+1837.txt,OLIVER TWIST OR THE PARISH BOY'S PROGRESS,CHARLES DICKENS,M,1812,1870,,1837,1830-1839,Project Gutenberg,157205,53,53,0,0,9198,17.09,1,224
+1838.txt,Deerbrook,Harriet Martineau,F,1802,1876,,1838,1830-1839,Project Gutenberg,220676,46,46,0,0,12097,18.24,1,145
+1839.txt,The Widow Barnaby Vol. I (of 3),Frances Trollope,F,1779,1863,Volume I only,1839,1830-1839,Project Gutenberg,60712,18,18,0,0,2162,28.08,1,151
+1840.txt,Tippoo Sultaun: A tale of the Mysore war,Meadows Taylor,M,1808,1876,,1840,1840-1849,Project Gutenberg,203641,49,49,0,0,6711,30.35,1,245
+1841.txt,"Charles O’Malley, The Irish Dragoon, Volume 1 (of 2)",Charles Lever,M,1806,1872,Volume I only,1841,1840-1849,Project Gutenberg,169556,68,67,1,0,5708,29.71,1,307
+1842.txt,Windsor Castle,William Harrison Ainsworth,M,1805,1882,,1842,1840-1849,Project Gutenberg,115420,59,53,6,0,4624,24.96,1,332
+1844.txt,Barry Lyndon,William Makepeace Thackeray,M,1811,1863,,1844,1840-1849,Project Gutenberg,125532,19,19,0,0,3724,33.71,1,183
+1845.txt,Sybil or the Two Nations,Benjamin Disraeli,M,1804,1881,,1845,1840-1849,Project Gutenberg,157801,77,71,6,0,6157,25.63,1,170
+1846.txt,"Wagner, the Wehr-Wolf",George W. M. Reynolds,M,1814,1879,,1846,1840-1849,Project Gutenberg,188654,67,65,2,0,7290,25.88,1,213
+1847.txt,Wuthering Heights,Emily Bronte,F,1818,1848,,1847,1840-1849,Project Gutenberg,115848,34,34,0,0,6816,17.0,1,121
+1848.txt,The Tenant of Wildfell Hall,Anne Bronte,F,1820,1849,Published under psuedonym Acton Bell,1848,1840-1849,Project Gutenberg,165532,53,53,0,0,7188,23.03,1,351
+1849.txt,Shirley,Charlotte Brontë,F,1816,1855,,1849,1840-1849,Project Gutenberg,213940,37,37,0,0,14481,14.77,1,286
+1849a.txt,The Nemesis of Faith.,J. A. Froude,M,1818,1894,,1849,1840-1849,"Nineteenth-Century Fiction, http://collections.chadwyck.co.uk",62130,11,11,0,226,2355,26.38,1,188
+1850.txt,The Ladder of Gold: VOL.II.,"Bell, Robert",M,1800,1867,Volume II only,1850,1850-1859,"Nineteenth-Century Fiction, http://collections.chadwyck.co.uk",61710,16,14,2,297,3068,20.12,1,218
+1851.txt,"Lavengro: The Scholar, The Gypsy, The Priest",George Borrow,M,1803,1881,Volume II only,1851,1850-1859,Project Gutenberg,219601,100,100,0,0,6281,34.96,1,376
+1853.txt,"Charles Auchester, Volume 1 of 2",Elizabeth Sheppard,F,1830,1862,Volume I only,1853,1850-1859,Project Gutenberg,88021,31,31,0,34,4585,19.2,1,200
+1855.txt,Westward Ho!,Charles Kingsley,M,1819,1875,,1855,1850-1859,Project Gutenberg,251349,33,33,0,0,8287,30.33,1,383
+1855a.txt,Rachel Gray,Julia Kavanagh,F,1824,1877,,1855,1850-1859,Project Gutenberg,48511,22,22,0,0,2817,17.22,1,151
+1856.txt,It Is Never Too Late to Mend,Charles Reade,M,1814,1884,,1856,1850-1859,Project Gutenberg,257327,85,85,0,0,13160,19.56,1,174
+1857.txt,"John Halifax, Gentleman",Dinah Maria Mulock Craik,F,1826,1887,,1857,1850-1859,Project Gutenberg,174674,40,40,0,0,12021,14.53,1,125
+1858.txt,Ask Mamma or The Richest Commoner In England,R. S. Surtees,M,1805,1864,,1858,1850-1859,Project Gutenberg,174184,63,63,0,0,5658,30.79,1,334
+1861.txt,East Lynne,Mrs Henry Wood,F,1814,1887,,1861,1860-1869,Project Gutenberg,206431,47,47,0,0,11228,18.39,1,105
+1861a.txt,Tom Brown at Oxford,Thomas Hughes,M,1822,1896,,1861,1860-1869,Project Gutenberg,246865,51,51,0,0,12686,19.46,1,255
+1862.txt,Lady Audley's Secret,Mary Elizabeth Braddon,F,1835,1915,,1862,1860-1869,Project Gutenberg,148780,41,41,0,0,7344,20.26,1,219
+1863.txt,The House by the Church-Yard,Joseph Sheridan Le Fanu,M,1814,1873,,1863,1860-1869,Project Gutenberg,133297,79,79,0,0,5812,22.94,1,566
+1864.txt,Wives and Daughters: An Every-day Story,Elizabeth Cleghorn Gaskell,F,1810,1865,,1864,1860-1869,Project Gutenberg,269443,60,60,0,0,14375,18.74,1,171
+1865.txt,Alice's Adventures in Wonderland,Lewis Carroll,M,1832,1898,,1865,1860-1869,Project Gutenberg,26331,12,12,0,0,965,27.29,1,260
+1866.txt,Miss Marjoribanks,Margeret Oliphant,F,1828,1897,,1866,1860-1869,Project Gutenberg,205610,52,52,0,0,7476,27.5,1,251
+1867.txt,Under Two Flags,Ouida [Louise de la Ramee],F,1839,1908,Also known as Ouida,1867,1860-1869,Project Gutenberg,240827,38,38,0,0,8293,29.04,1,290
+1868.txt,The Moonstone,Wilkie Collins,M,1824,1889,,1868,1860-1869,Project Gutenberg,193394,69,57,12,0,11997,16.12,1,150
+1860.txt,Semi-Attached Couple,Emily Eden,F,1797,1869,,1869,1860-1869,A Celebration of Women Writers,80485,48,48,0,0,3716,21.66,1,131
+1869.txt,Lorna Doone,Richard Doddrige Blackmore,M,1825,1900,,1869,1860-1869,Project Gutenberg,273634,75,75,0,0,10254,26.69,1,158
+1870.txt,Red as a Rose is She,Rhoda Broughton,F,1840,1920,,1870,1870-1879,Project Gutenberg,135866,42,42,0,0,7452,18.23,1,146
+1871.txt,Joshua Marvel,Benjamin Leopold Farjeon,M,1838,1903,,1871,1870-1879,Project Gutenberg,193697,42,42,0,0,11682,16.58,1,228
+1872.txt,The True Story of Joshua Davidson,Elizabeth Lynn Linton,F,1822,1898,,1872,1870-1879,"Nineteenth-Century Fiction, http://collections.chadwyck.co.uk",38310,13,13,0,0,1523,25.16,1,221
+1873.txt,Old Kensington,Anne Thackeray Ritchie,F,1837,1919,,1873,1870-1879,Project Gutenberg,153067,56,56,0,0,9250,16.55,1,116
+1873a.txt,In the Days of My Youth,Amelia Ann Blandford Edwards,F,1831,1892,,1873,1870-1879,Project Gutenberg,148062,56,56,0,0,9513,15.56,1,149
+1874.txt,Mortomley's Estate,Charlotte Elizabeth Riddell,F,1832,1906,All 3 volumes,1874,1870-1879,Project Gutenberg,156556,47,45,2,0,7163,21.86,1,184
+1875.txt,The Way We Live Now,Anthony Trollope,M,1815,1882,,1875,1870-1879,Project Gutenberg,349153,100,100,0,0,22170,15.75,1,136
+1876.txt,Daniel Deronda,George Eliot,F,1819,1880,,1876,1870-1879,Project Gutenberg,308916,78,70,8,0,14279,21.64,1,189
+1877.txt,Black Beauty,Anna Sewell,F,1820,1878,,1877,1870-1879,Project Gutenberg,59811,53,49,4,0,1989,30.07,1,252
+1879.txt,The Egoist: A Comedy in Narrative,George Meredith,M,1828,1909,,1879,1870-1879,Project Gutenberg,187431,51,51,0,0,14454,12.97,1,216
+1881.txt,John Inglesant: A Romance,John Henry Shorthouse,M,1834,1903,All 2 volumes,1881,1880-1889,Project Gutenberg,186662,39,39,0,0,6106,30.57,1,218
+1882.txt,Vice Versa or A Lesson to Fathers,Thomas Anstey Guthrie,M,1856,1934,,1882,1880-1889,Project Gutenberg,93628,19,19,0,0,5227,17.91,1,116
+1883.txt,The Story of an African Farm,Olive Schreiner,F,1855,1920,,1883,1880-1889,Project Gutenberg,101337,29,27,2,0,5541,18.29,1,205
+1883a.txt,Treasure Island,Robert Louis Stevenson,M,1850,1894,,1883,1880-1889,Project Gutenberg,67874,40,34,6,0,3736,18.17,1,105
+1884.txt,We Two,Edna Lyall,F,1857,1903,,1884,1880-1889,Project Gutenberg,170039,42,42,0,0,7198,23.62,1,140
+1885.txt,King Solomon's Mines,Henry Rider Haggard,M,1856,1925,,1885,1880-1889,Project Gutenberg,82038,20,20,0,0,4139,19.82,1,161
+1886.txt,A Phantom Lover,Violet Lee Paget,F,1856,1935,Published under pseudonym Vernon Lee,1886,1880-1889,Project Gutenberg,20257,10,10,0,0,904,22.41,1,134
+1886a.txt,Little Lord Fauntleroy,Frances Hodgson Burnett,F,1849,1924,,1886,1880-1889,Project Gutenberg,58328,15,15,0,0,2561,22.78,1,381
+1888.txt,Robert Elsmere,Mary Augusta Ward (Mrs. Humphry Ward,F,1851,1920,,1888,1880-1889,Project Gutenberg,285586,51,51,0,0,13171,21.68,1,194
+1889.txt,Three Men in a Boat,Jerome K. Jerome,M,1859,1927,,1889,1880-1889,Project Gutenberg EBook,66546,19,19,0,0,3319,20.05,1,220
+1890.txt,The Sign of the Four,Sir Arthur Conan Doyle,M,1859,1930,,1890,1890-1899,Project Gutenberg,42996,12,12,0,0,2923,14.71,1,79
+1891.txt,New Grub Street,George Gissing,M,1857,1903,,1891,1890-1899,Project Gutenberg,185603,42,37,5,0,13432,13.82,1,104
+1892.txt,The Dairy of a Nobody,George Grossmith and Walter Weedon Grossmith,M,1854,1919,Two authors | Grossmith George 1847-1912,1892,1890-1899,Project Gutenberg,41912,24,24,0,0,2537,16.52,1,84
+1893.txt,Miss Stuart's Legacy,Flora Annie Steel,F,1847,1929,,1893,1890-1899,Project Gutenberg,106038,27,27,0,0,6169,17.19,1,103
+1893a.txt,The Heavenly Twins,Frances Elizabeth Bellenden Clarke (Pen name: Sarah Grand),F,1854,1943,Published under name Sarah Grand,1893,1890-1899,Project Gutenberg,280286,97,91,6,0,14639,19.15,1,175
+1894.txt,The Daughters of Danaus,Mona Caird,F,1854,1932,,1894,1890-1899,Project Gutenberg,156287,51,51,0,0,10223,15.29,1,177
+1894a.txt,The Prisoner of Zenda,Anthony Hope,M,1863,1933,,1894,1890-1899,Project Gutenberg,53455,22,22,0,0,3898,13.71,1,150
+1895.txt,Jude the Obscure,Thomas Hardy,M,1840,1928,,1895,1890-1899,Project Gutenberg,144028,59,53,6,0,9297,15.49,1,127
+1896.txt,The Island of Doctor Moreau,Herbert George Wells,M,1866,1946,,1896,1890-1899,Project Gutenberg,43361,23,23,0,0,2879,15.06,1,102
+1897.txt,Dracula,"Abraham ""Bram"" Stoker",M,1847,1912,,1897,1890-1899,Project Gutenberg,160240,27,27,0,0,8607,18.62,1,154
+1899.txt,Red Pottage,Mary Cholmondeley,F,1859,1925,,1899,1890-1899,Project Gutenberg,116672,54,53,1,0,8259,14.13,1,145
