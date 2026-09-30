@@ -5,9 +5,13 @@ Literary Time Visualization in 19th/Early-20th-Century Novels — Shawna Ross GA
 Phase 1 is complete and validated against the real corpus: all 100 novels
 downloaded, parsed, and ingested; `verify.py` passes; author gender and
 volume-completeness metadata backfilled from the corpus's own
-documentation. See [`reports/weeks-01-02.md`](reports/weeks-01-02.md) for
-the full write-up (architecture diagrams, corpus-wide analysis, findings,
-and open items for review).
+documentation. Phase 2 (temporal analysis engine) is underway: the
+foundational layer — tense classification and explicit temporal-marker
+detection — is built and unit-tested. See the biweekly reports for the
+full write-up (architecture diagrams, corpus-wide analysis, findings, and
+open items for review):
+[`reports/weeks-01-02.md`](reports/weeks-01-02.md),
+[`reports/weeks-03-04.md`](reports/weeks-03-04.md).
 
 ## Corpus source correction
 
@@ -37,11 +41,21 @@ src/
                        temporal-marker/vocabulary extraction), exports CSV
   enrich_metadata.py  backfills real author gender/birth-death/volume-completeness
                        from the corpus's own Contents PDF (99% of this data doesn't
-                       exist in the per-novel text files themselves)
+                       exist in the per-novel text files themselves); also sets
+                       novels.analysis_eligible = 0 for the 9 confirmed
+                       single-volume-of-a-multi-volume-original novels
+  temporal/            Phase 2 engine, foundational layer only so far:
+    nlp_setup.py          shared spaCy pipeline (tagger only -- parser/NER/
+                           lemmatizer/morphologizer all disabled, unused)
+    tense_tagger.py        rule-based dominant-tense classification per sentence
+    temporal_markers.py    explicit temporal-marker phrase detection
+    confidence.py           shared confidence-score clamp helper
 tests/
   test_preprocess.py  unit tests against fixtures matching the real file format
+  test_temporal.py    unit tests for tense_tagger.py / temporal_markers.py
 reports/
-  weeks-01-02.md       biweekly progress report: architecture, findings, analysis
+  weeks-01-02.md       biweekly report: Phase 1 pipeline, corpus-wide analysis
+  weeks-03-04.md       biweekly report: GitHub publish, Phase 2 kickoff
   data/novel_stats.csv full per-novel data (all 100 novels, all extracted fields)
 ```
 
@@ -135,8 +149,10 @@ python -m src.analyze_corpus --deep --csv reports/data/novel_stats.csv
 - [x] `python -m src.build_pipeline --limit 10` then `python -m src.verify` passes
 - [x] `python -m src.build_pipeline` (full run) then `python -m src.verify` passes
 - [x] `corpus.db` contains `novels`, `divisions`, `pages`, `sentences`, `qc_log` populated
-- [x] `pytest tests/` green (7/7)
+- [x] `pytest tests/` green (15/15 — 7 Phase 1 + 8 Phase 2 foundational-layer tests)
 
 See [`reports/weeks-01-02.md`](reports/weeks-01-02.md) for corpus-wide
 analysis, deviations from the SOW worth flagging to Shawna (page-marker
-coverage, 9 partial-volume novels, the dead corpus URL), and open items.
+coverage, 9 partial-volume novels, the dead corpus URL), and open items;
+see [`reports/weeks-03-04.md`](reports/weeks-03-04.md) for the GitHub
+publish and Phase 2 kickoff.
