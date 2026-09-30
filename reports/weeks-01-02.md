@@ -109,7 +109,7 @@ flowchart LR
     B --> C[strip Gutenberg boilerplate]
     C --> D{text tag found?}
     D -->|yes| E[split header/body at text tags]
-    D -->|no| F[fallback: first 15 lines]
+    D -->|no| F["fallback - first 15 lines"]
     E --> G[extract header fields]
     F --> G
     G --> H[strip division/page tags, index offsets]
