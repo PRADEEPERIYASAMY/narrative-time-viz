@@ -2,3 +2,6 @@ requests>=2.31
 nltk>=3.8
 pytest>=7.4
 PyPDF2>=3.0
+spacy>=3.8
+# after installing requirements, also run:
+#   python -m spacy download en_core_web_sm
