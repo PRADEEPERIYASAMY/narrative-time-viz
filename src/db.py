@@ -6,6 +6,11 @@ carry both a division_id and a page_id foreign key, so "does this temporal
 shift show up at sentence-level but wash out at page-level" (SOW Phase 2) is
 a straightforward join, and page-anchored plots (SOW: "this shift occurs at
 page 47 of the original edition") come for free from the pages table.
+
+Phase 2 adds: novels.analysis_eligible (0 for the 9 novels confirmed to be
+a single volume of a multi-volume original -- see enrich_metadata.py, which
+sets this after every ingest), plus sentence_features/temporal_events/
+granularity_comparison for the temporal analysis engine (src/temporal/).
 """
 import sqlite3
 from bisect import bisect_right
@@ -24,6 +29,7 @@ CREATE TABLE IF NOT EXISTS novels (
     author_birth_year   INTEGER,
     author_death_year   INTEGER,
     volume_note         TEXT,
+    analysis_eligible   INTEGER DEFAULT 1,
     year                INTEGER,
     decade              TEXT,
     source              TEXT,
@@ -68,10 +74,63 @@ CREATE TABLE IF NOT EXISTS qc_log (
     warning         TEXT
 );
 
+CREATE TABLE IF NOT EXISTS sentence_features (
+    sentence_id          INTEGER PRIMARY KEY REFERENCES sentences(id) ON DELETE CASCADE,
+    dominant_tense       TEXT,
+    tense_confidence     REAL,
+    has_past_perfect     INTEGER DEFAULT 0,
+    has_explicit_marker  INTEGER DEFAULT 0,
+    marker_phrases       TEXT
+);
+
+CREATE TABLE IF NOT EXISTS temporal_events (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    novel_id     INTEGER NOT NULL REFERENCES novels(id) ON DELETE CASCADE,
+    sentence_id  INTEGER REFERENCES sentences(id),
+    division_id  INTEGER REFERENCES divisions(id),
+    page_id      INTEGER REFERENCES pages(id),
+    granularity  TEXT CHECK(granularity IN ('sentence','division','page')),
+    event_type   TEXT CHECK(event_type IN ('tense_shift','explicit_marker','scene_boundary','flashback','flashforward')),
+    subtype      TEXT,
+    confidence   REAL,
+    detail       TEXT,
+    start_char   INTEGER,
+    end_char     INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS granularity_comparison (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    novel_id            INTEGER NOT NULL REFERENCES novels(id) ON DELETE CASCADE,
+    event_signature     TEXT,
+    visible_at_sentence INTEGER DEFAULT 0,
+    visible_at_division INTEGER DEFAULT 0,
+    visible_at_page     INTEGER DEFAULT 0
+);
+
 CREATE INDEX IF NOT EXISTS idx_sentences_novel ON sentences(novel_id);
 CREATE INDEX IF NOT EXISTS idx_divisions_novel ON divisions(novel_id);
 CREATE INDEX IF NOT EXISTS idx_pages_novel ON pages(novel_id);
+CREATE INDEX IF NOT EXISTS idx_temporal_events_novel ON temporal_events(novel_id);
+CREATE INDEX IF NOT EXISTS idx_sentence_features_tense ON sentence_features(dominant_tense);
 """
+
+# columns added after the original schema shipped -- CREATE TABLE IF NOT
+# EXISTS won't retroactively add a column to an existing table, so an
+# already-built corpus.db needs an explicit ALTER TABLE.
+_NOVELS_MIGRATIONS = [
+    ("author_gender", "TEXT"),
+    ("author_birth_year", "INTEGER"),
+    ("author_death_year", "INTEGER"),
+    ("volume_note", "TEXT"),
+    ("analysis_eligible", "INTEGER DEFAULT 1"),
+]
+
+
+def _migrate_novels_columns(conn: sqlite3.Connection) -> None:
+    existing = {row[1] for row in conn.execute("PRAGMA table_info(novels)")}
+    for col, coltype in _NOVELS_MIGRATIONS:
+        if col not in existing:
+            conn.execute(f"ALTER TABLE novels ADD COLUMN {col} {coltype}")
 
 
 def get_connection(db_path: Path = config.DB_PATH) -> sqlite3.Connection:
@@ -79,6 +138,7 @@ def get_connection(db_path: Path = config.DB_PATH) -> sqlite3.Connection:
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON;")
     conn.executescript(SCHEMA)
+    _migrate_novels_columns(conn)
     return conn
 
 

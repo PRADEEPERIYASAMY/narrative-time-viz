@@ -1,8 +1,8 @@
 """
 Backfill author gender and birth/death years, and flag partial-volume
-novels, from HUM19UK's own "Corpus Contents" PDF -- the corpus creators'
-official bibliographic index (100 rows: year, author, gender, lifespan,
-title, source, notes).
+novels (setting novels.analysis_eligible = 0 for them), from HUM19UK's own
+"Corpus Contents" PDF -- the corpus creators' official bibliographic index
+(100 rows: year, author, gender, lifespan, title, source, notes).
 
 Why this exists: per-novel header files carry a Gender field in only 1 of
 100 novels (see reports/weeks-01-02.md), so author gender is essentially
@@ -28,7 +28,15 @@ import re
 import sqlite3
 import sys
 
-from . import config
+from . import config, db
+
+# matches "Volume I only" / "Volume II only" -- the exact phrasing the PDF
+# uses when a file is a partial extract. Deliberately narrow: volume_note
+# also holds unrelated notes ("Published under pseudonym...", "Two
+# authors", "All 3 volumes") that must NOT be treated as partial-volume
+# flags -- a blanket "volume_note IS NOT NULL" check would incorrectly
+# exclude those too (8 novels, including 2 explicitly marked complete).
+VOLUME_ONLY_NOTE_PATTERN = re.compile(r"\bvolume\s+[ivxlc]+\s+only\b", re.IGNORECASE)
 
 SOURCES = [
     "Gutenberg", "Chawton House", "Chadwyck Healey",
@@ -137,14 +145,8 @@ def main():
     parsed = parse_contents_pdf(args.pdf_path)
     print(f"parsed {len(parsed)} rows from the corpus contents PDF")
 
-    conn = sqlite3.connect(config.DB_PATH)
+    conn = db.get_connection()  # also runs the novels-table column migration
     conn.row_factory = sqlite3.Row
-    for col, coltype in [
-        ("author_birth_year", "INTEGER"), ("author_death_year", "INTEGER"),
-        ("volume_note", "TEXT"),
-    ]:
-        if not _column_exists(conn, col):
-            conn.execute(f"ALTER TABLE novels ADD COLUMN {col} {coltype}")
 
     db_novels = conn.execute("SELECT id, filename, title FROM novels").fetchall()
     matches, unmatched_pdf, unmatched_db = match_to_db(parsed, db_novels)
@@ -162,22 +164,23 @@ def main():
         print("\n--dry-run: no changes written.")
         return
 
+    n_partial = 0
     for p, n, score in matches:
+        notes = p["notes"] or None
+        eligible = 0 if (notes and VOLUME_ONLY_NOTE_PATTERN.search(notes)) else 1
+        n_partial += 1 - eligible
         conn.execute(
             """UPDATE novels SET author_gender = ?, author_birth_year = ?,
-               author_death_year = ?, volume_note = ?
+               author_death_year = ?, volume_note = ?, analysis_eligible = ?
                WHERE id = ?""",
-            (p["gender"], p["birth_year"], p["death_year"],
-             p["notes"] or None, n["id"]),
+            (p["gender"], p["birth_year"], p["death_year"], notes, eligible, n["id"]),
         )
     conn.commit()
-    print(f"\nbackfilled author_gender/author_birth_year/author_death_year/volume_note for {len(matches)} novels")
+    print(f"\nbackfilled author_gender/author_birth_year/author_death_year/volume_note "
+          f"for {len(matches)} novels")
+    print(f"analysis_eligible: {len(matches) - n_partial} eligible, "
+          f"{n_partial} excluded (confirmed single-volume extracts)")
     conn.close()
-
-
-def _column_exists(conn: sqlite3.Connection, name: str) -> bool:
-    cols = {row[1] for row in conn.execute("PRAGMA table_info(novels)")}
-    return name in cols
 
 
 if __name__ == "__main__":
