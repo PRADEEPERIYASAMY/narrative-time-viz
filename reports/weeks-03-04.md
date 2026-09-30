@@ -56,31 +56,26 @@ flowchart LR
     B -.regenerates.-> F[("data/processed/corpus.db<br/>not committed, 178MB,<br/>over GitHub's 100MB limit")]
 ```
 
-13 commits, organized by module rather than by day, so the history reads as
-a build-up of the pipeline rather than a diary:
+The initial publish was 12 commits carrying over Phase 1's pipeline, tests,
+docs, and analysis scripts (config through the Weeks 1-2 report) — see
+`reports/weeks-01-02.md` for that period's own write-up. This period added
+5 more, covering the mermaid fix, the Phase 2 schema, the foundational
+detectors, and this report:
 
 | # | Commit | What it added |
 |---|---|---|
-| 1 | `chore: project scaffolding, gitignore, dependencies` | `.gitignore`, `requirements.txt` |
-| 2 | `feat: corpus config with corrected HUM19UK download URLs` | `src/config.py` |
-| 3 | `feat: corpus downloader for the 10 HUM19UK decade zips` | `src/download_corpus.py` |
-| 4 | `feat: core Phase 1 preprocessing pipeline` | `src/preprocess.py` |
-| 5 | `feat: SQLite schema and insert layer` | `src/db.py`, `src/__init__.py` |
-| 6 | `feat: CLI pipeline entrypoint and Phase 1 acceptance checks` | `src/build_pipeline.py`, `src/verify.py` |
-| 7 | `feat: corpus inspection tool for regex calibration` | `src/inspect_corpus.py` |
-| 8 | `test: unit tests for preprocessing against real-format fixtures` | `tests/` |
-| 9 | `docs: rewrite README to reflect verified Phase 1 state` | `README.md` |
-| 10 | `feat: corpus-wide and per-novel descriptive analysis` | `src/analyze_corpus.py` |
-| 11 | `feat: backfill author gender/birth-death/volume-completeness from corpus docs` | `src/enrich_metadata.py` |
-| 12 | `docs: biweekly progress report for Weeks 1-2` | `reports/weeks-01-02.md`, `reports/data/` |
-| 13 | `chore: keep corpus.db out of git` | `.gitignore` |
+| 13 | `fix: correct mermaid syntax error in Weeks 1-2 report` | `reports/weeks-01-02.md` |
+| 14 | `feat: analysis_eligible flag and Phase 2 schema additions` | `src/db.py`, `src/enrich_metadata.py` |
+| 15 | `feat: Phase 2 foundational layer -- tense tagging and explicit markers` | `src/temporal/`, `tests/test_temporal.py`, `requirements.txt` |
+| 16 | `docs: biweekly progress report for Weeks 3-4` | `reports/weeks-03-04.md` |
+| 17 | `docs: update README for Phase 2 kickoff` | `README.md` |
 
 `corpus.db` stays out of git and gets rebuilt locally via
 `download_corpus.py` + `build_pipeline.py` + `enrich_metadata.py` — all
 three are committed, so the database is a build artifact, not a source
 file. This period's Phase 2 work (`src/temporal/`, schema additions,
-`tests/test_temporal.py`) is written and verified but not yet committed —
-next natural commit once this report is reviewed.
+`tests/test_temporal.py`) is written, unit-tested, and committed
+(commits 14-15 above).
 
 ### Phase 2 pipeline: sentence text to tagged features
 
@@ -395,6 +390,5 @@ unilaterally:
   the foundational layer built this period.
 - Then granularity comparison across sentence/division/page, using the
   schema already in place.
-- Commit this period's `src/temporal/` work and this report once reviewed.
 - Bring the "Open items" above to the next check-in rather than assuming
   an answer.
