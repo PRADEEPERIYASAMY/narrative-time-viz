@@ -1,39 +1,75 @@
 """
-Explicit temporal-marker phrase detection -- literal (case-insensitive)
-phrase matching, not a trained classifier.
+Explicit temporal-marker phrase detection -- literal (case-insensitive,
+whole-word) phrase matching, not a trained classifier.
 
-Seed list combines the 13 phrases already validated against the Phase 1
-corpus (reports/weeks-01-02.md's "Deeper extraction" section: 3,001 hits
-corpus-wide from just these) with additional SOW-aligned phrases ("that
-same day," "not long after," etc.) not previously tested against the
-corpus -- treat the latter as untested until this module actually runs and
-reports counts.
+Each phrase is assigned a category describing what it signals about story
+time, because different detectors need different subsets:
+
+  forward_jump   story time skips ahead ("years later", "the next day")
+  retrospective  points back to an earlier time ("long ago", "ever since")
+  simultaneity   a parallel strand at the same time ("meanwhile")
+  time_of_day    a time-of-day anchor ("at dawn")
+  anchor         a reference point, no direction ("by now", "that same day")
+  abruptness     a sudden onset within continuous time ("suddenly")
+
+The categories were introduced in Weeks 5-6, after this module first ran
+against real text: 104 of 229 hits across the 5-novel test slice were
+"suddenly", which marks an abrupt event, not a skip in story time. Counting
+it as a jump overstated scene duration (one Dracula chapter showed 11
+"jumps") and fed noise into the flashback cue signal. scene_duration.py now
+counts only forward_jump phrases; flashback_detector.py reads only
+retrospective (flashback) or forward_jump (flash-forward) phrases as cues.
 """
 import re
 
-# validated against the Phase 1 corpus (reports/weeks-01-02.md)
-_VALIDATED_PHRASES = [
-    "years later", "months later", "days later", "weeks later",
-    "at dawn", "at dusk", "in the meantime", "meanwhile",
-    "the following day", "the next day", "years before", "long ago", "years ago",
-]
+MARKER_CATEGORY = {
+    # validated against the full corpus in Phase 1 (reports/weeks-01-02.md)
+    "years later": "forward_jump",
+    "months later": "forward_jump",
+    "days later": "forward_jump",
+    "weeks later": "forward_jump",
+    "the following day": "forward_jump",
+    "the next day": "forward_jump",
+    "years before": "retrospective",
+    "long ago": "retrospective",
+    "years ago": "retrospective",
+    "in the meantime": "simultaneity",
+    "meanwhile": "simultaneity",
+    "at dawn": "time_of_day",
+    "at dusk": "time_of_day",
+    # added in Weeks 3-4; first run against real text in Weeks 5-6
+    "some time later": "forward_jump",
+    "not long after": "forward_jump",
+    "before long": "forward_jump",
+    "from then on": "forward_jump",
+    "ever since": "retrospective",
+    "in those days": "retrospective",
+    "until now": "retrospective",
+    "that same day": "anchor",
+    "by now": "anchor",
+    "it was not until": "anchor",
+    "suddenly": "abruptness",
+    "all at once": "abruptness",
+}
 
-# additional phrases, not yet validated against this corpus
-_ADDITIONAL_PHRASES = [
-    "that same day", "not long after", "some time later", "by now",
-    "until now", "from then on", "ever since", "in those days",
-    "it was not until", "before long", "all at once", "suddenly",
-]
-
-MARKER_PHRASES = _VALIDATED_PHRASES + _ADDITIONAL_PHRASES
+MARKER_PHRASES = list(MARKER_CATEGORY)
 
 _PATTERN = re.compile(
-    "|".join(re.escape(p) for p in sorted(MARKER_PHRASES, key=len, reverse=True)),
+    r"\b(?:" + "|".join(re.escape(p) for p in sorted(MARKER_PHRASES, key=len, reverse=True)) + r")\b",
     re.IGNORECASE,
 )
 
 
 def find_markers(text: str) -> list[str]:
-    """Return every matched phrase (lowercased), in order of appearance.
-    A sentence can match more than once (e.g. two different phrases)."""
+    """Every matched phrase (lowercased), in order of appearance. A
+    sentence can match more than once."""
     return [m.group(0).lower() for m in _PATTERN.finditer(text)]
+
+
+def category_of(phrase: str) -> str:
+    return MARKER_CATEGORY[phrase.lower()]
+
+
+def phrases_in(phrases: list[str], category: str) -> list[str]:
+    """The subset of already-matched phrases belonging to one category."""
+    return [p for p in phrases if MARKER_CATEGORY.get(p) == category]
