@@ -1,0 +1,1218 @@
+{
+  "novels": 91,
+  "sentences": 570123,
+  "words": 12370566,
+  "events": {
+    "explicit_marker": 40497,
+    "flashback": 26861,
+    "flashforward": 4639,
+    "scene_boundary": 3819,
+    "tense_shift": 268859
+  },
+  "marker_categories": {
+    "time_of_day": 9365,
+    "meal": 5843,
+    "frequency": 5433,
+    "sequence": 4744,
+    "forward_jump": 3864,
+    "abruptness": 3291,
+    "duration": 2973,
+    "retrospective": 2412,
+    "simultaneity": 1845,
+    "clock_time": 1442,
+    "seasonal": 1380,
+    "recollection": 811,
+    "calendar_date": 674,
+    "holiday": 629,
+    "travel": 502,
+    "year": 262,
+    "biographical": 155,
+    "anchor": 111
+  },
+  "marker_tiers": {
+    "order": 4744,
+    "position": 18544,
+    "movement": 10717,
+    "iterative": 5433,
+    "absolute": 3007,
+    "not_temporal": 3291
+  },
+  "multi_unit_events": 7522,
+  "scene_durations": {
+    "scenes": 3819,
+    "labels": {
+      "jump": 1983,
+      "iterative": 934,
+      "continuous": 326,
+      "anchored": 352,
+      "unmarked": 224
+    },
+    "shares": {
+      "jump": 0.5192,
+      "iterative": 0.2446,
+      "continuous": 0.0854,
+      "anchored": 0.0922,
+      "unmarked": 0.0587
+    },
+    "multi_unit_scenes": 2289,
+    "scenes_with_stated_elapsed_time": 1746,
+    "median_stated_elapsed_days": 2.0
+  },
+  "phrase_counts": {
+    "abruptness": {
+      "suddenly": 3071,
+      "all at once": 220
+    },
+    "anchor": {
+      "by now": 54,
+      "it was not until": 45,
+      "that same day": 12
+    },
+    "biographical": {
+      "after the death": 26,
+      "came of age": 14,
+      "after the funeral": 13,
+      "after his death": 9,
+      "after her marriage": 9,
+      "come of age": 8,
+      "coming of age": 7,
+      "after his marriage": 6,
+      "after her death": 6,
+      "after the marriage": 6,
+      "after the wedding": 4,
+      "after his wife's death": 3
+    },
+    "calendar_date": {
+      "1 october": 8,
+      "the first of september": 7,
+      "the twenty-first of june": 6,
+      "1st of september": 6,
+      "25 september": 6,
+      "29 september": 6,
+      "17 september": 5,
+      "30 september": 5,
+      "1st of august": 4,
+      "7th of september": 4,
+      "the fourth of july": 4,
+      "18 september": 4
+    },
+    "clock_time": {
+      "ten o'clock": 95,
+      "nine o'clock": 90,
+      "eight o'clock": 78,
+      "two o'clock": 75,
+      "five o'clock": 73,
+      "twelve o'clock": 68,
+      "six o'clock": 67,
+      "three o'clock": 60,
+      "eleven o'clock": 58,
+      "four o'clock": 57,
+      "seven o'clock": 47,
+      "one o'clock": 45
+    },
+    "duration": {
+      "for an hour": 184,
+      "for a week": 140,
+      "for a day": 112,
+      "for many years": 93,
+      "for a few days": 81,
+      "for a month": 76,
+      "for a year": 61,
+      "all the morning": 57,
+      "for some days": 54,
+      "for some years": 51,
+      "for a few hours": 48,
+      "for several days": 45
+    },
+    "forward_jump": {
+      "the next day": 491,
+      "the next morning": 418,
+      "next morning": 257,
+      "next day": 237,
+      "before long": 154,
+      "the day after": 144,
+      "the following day": 141,
+      "the following morning": 98,
+      "next week": 96,
+      "ere long": 84,
+      "the morrow": 84,
+      "on the morrow": 82
+    },
+    "frequency": {
+      "used to": 1765,
+      "usually": 634,
+      "every day": 618,
+      "constantly": 386,
+      "every now and then": 251,
+      "again and again": 239,
+      "repeatedly": 139,
+      "day after day": 124,
+      "many a time": 116,
+      "over and over again": 103,
+      "every morning": 100,
+      "every night": 93
+    },
+    "holiday": {
+      "christmas": 260,
+      "easter": 87,
+      "sabbath": 66,
+      "michaelmas": 47,
+      "midsummer": 24,
+      "lent": 18,
+      "lady-day": 14,
+      "whitsuntide": 13,
+      "good friday": 11,
+      "christmas-eve": 9,
+      "christmas eve": 8,
+      "quarter-day": 6
+    },
+    "meal": {
+      "dinner": 2577,
+      "breakfast": 1451,
+      "supper": 791,
+      "dine": 397,
+      "lunch": 226,
+      "luncheon": 199,
+      "to tea": 103,
+      "after tea": 38,
+      "at tea": 27,
+      "tea-time": 23,
+      "till tea": 5,
+      "before tea": 3
+    },
+    "recollection": {
+      "recollected": 341,
+      "he remembered": 187,
+      "she remembered": 160,
+      "i remembered": 118,
+      "recalled to mind": 5
+    },
+    "retrospective": {
+      "years ago": 463,
+      "ever since": 421,
+      "formerly": 362,
+      "long ago": 338,
+      "previously": 333,
+      "in those days": 208,
+      "years before": 168,
+      "until now": 51,
+      "prior to": 48,
+      "once upon a time": 20
+    },
+    "seasonal": {
+      "the summer": 256,
+      "the spring": 198,
+      "the winter": 173,
+      "harvest": 160,
+      "the autumn": 89,
+      "in winter": 49,
+      "in summer": 44,
+      "last summer": 32,
+      "last winter": 31,
+      "in spring": 29,
+      "the\nsummer": 28,
+      "this winter": 25
+    },
+    "sequence": {
+      "presently": 1640,
+      "afterwards": 1314,
+      "later": 712,
+      "soon after": 425,
+      "afterward": 308,
+      "by and by": 146,
+      "shortly after": 126,
+      "subsequently": 73
+    },
+    "simultaneity": {
+      "meanwhile": 815,
+      "at the same time": 745,
+      "in the meantime": 276,
+      "at the same hour": 9
+    },
+    "time_of_day": {
+      "this morning": 788,
+      "last night": 700,
+      "in the morning": 688,
+      "that night": 628,
+      "dawn": 444,
+      "midnight": 435,
+      "at night": 430,
+      "in the evening": 420,
+      "this evening": 375,
+      "that evening": 358,
+      "noon": 327,
+      "sunset": 292
+    },
+    "travel": {
+      "arrived in london": 15,
+      "by return of post": 14,
+      "reached london": 14,
+      "before nightfall": 10,
+      "the next post": 8,
+      "reached oxford": 5,
+      "a day's journey": 5,
+      "reached st": 5,
+      "arrived at malta": 5,
+      "reached tehran": 4,
+      "reached england": 4,
+      "arrived at gibraltar": 4
+    },
+    "year": {
+      "18--": 11,
+      "17--": 6,
+      "of 1837": 4,
+      "august, 1854": 4,
+      "the year 1771": 3,
+      "of 1791": 3,
+      "in 1745": 3,
+      "of 1784": 3,
+      "of 1588": 3,
+      "the year 1793": 2,
+      "in 1794": 2,
+      "of 1794": 2
+    }
+  },
+  "threshold_recheck": {
+    "1": {
+      "detections": 85806,
+      "share_of_sentences": 0.1505
+    },
+    "2": {
+      "detections": 31500,
+      "share_of_sentences": 0.0553
+    },
+    "3": {
+      "detections": 879,
+      "share_of_sentences": 0.0015
+    },
+    "sentences": 570123
+  },
+  "granularity": {
+    "retrospection": {
+      "events": 26861,
+      "word": {
+        "visible_share": 0.8674,
+        "measurable_events": 26861
+      },
+      "passage": {
+        "visible_share": 0.6135,
+        "measurable_events": 26861
+      },
+      "scene": {
+        "visible_share": 0.2664,
+        "measurable_events": 26395
+      },
+      "page": {
+        "visible_share": 0.427,
+        "measurable_events": 1295
+      }
+    },
+    "prospection": {
+      "events": 4639,
+      "word": {
+        "visible_share": 0.9905,
+        "measurable_events": 4639
+      },
+      "passage": {
+        "visible_share": 0.7799,
+        "measurable_events": 4639
+      },
+      "scene": {
+        "visible_share": 0.33,
+        "measurable_events": 4612
+      },
+      "page": {
+        "visible_share": 0.5893,
+        "measurable_events": 168
+      }
+    },
+    "marker_density": {
+      "events": 40497,
+      "word": {
+        "visible_share": 1.0,
+        "measurable_events": 40497
+      },
+      "passage": {
+        "visible_share": 0.4366,
+        "measurable_events": 40497
+      },
+      "scene": {
+        "visible_share": 0.1867,
+        "measurable_events": 40051
+      },
+      "page": {
+        "visible_share": 0.2779,
+        "measurable_events": 1166
+      }
+    },
+    "tense_churn": {
+      "events": 268859,
+      "word": {
+        "visible_share": 0.4915,
+        "measurable_events": 268859
+      },
+      "passage": {
+        "visible_share": 0.1896,
+        "measurable_events": 268859
+      },
+      "scene": {
+        "visible_share": 0.1721,
+        "measurable_events": 266993
+      },
+      "page": {
+        "visible_share": 0.2127,
+        "measurable_events": 7966
+      }
+    },
+    "retrospection_high_confidence": {
+      "events": 1774,
+      "word": 0.8484,
+      "passage": 0.4481,
+      "scene": 0.2297,
+      "page": 0.3647
+    },
+    "retrospection_washout": {
+      "visible_at_word": 23298,
+      "lost_by_passage": 8463,
+      "lost_by_scene": 16690,
+      "lost_by_both": 6884
+    },
+    "median_unit_words": {
+      "word": 25,
+      "passage": 192.0,
+      "scene": 2813,
+      "page": 172.0
+    }
+  },
+  "trends": {
+    "_bonferroni_threshold": 0.00333,
+    "mean_sentence_words": {
+      "spearman_rho": -0.65,
+      "p": 0.0,
+      "decade_medians": {
+        "1800-1809": 32.89,
+        "1810-1819": 36.64,
+        "1820-1829": 32.81,
+        "1830-1839": 26.355,
+        "1840-1849": 25.6,
+        "1850-1859": 19.55,
+        "1860-1869": 21.64,
+        "1870-1879": 17.425,
+        "1880-1889": 20.87,
+        "1890-1899": 15.28
+      }
+    },
+    "past_perfect_share": {
+      "spearman_rho": -0.472,
+      "p": 0.0,
+      "partial_rho_controlling_sentence_length": 0.058,
+      "partial_p": 0.58768,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.1503,
+        "1810-1819": 0.1621,
+        "1820-1829": 0.1767,
+        "1830-1839": 0.1107,
+        "1840-1849": 0.1159,
+        "1850-1859": 0.0939,
+        "1860-1869": 0.1103,
+        "1870-1879": 0.1132,
+        "1880-1889": 0.1229,
+        "1890-1899": 0.0838
+      }
+    },
+    "present_share": {
+      "spearman_rho": 0.423,
+      "p": 3e-05,
+      "partial_rho_controlling_sentence_length": -0.06,
+      "partial_p": 0.5737,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.1188,
+        "1810-1819": 0.0984,
+        "1820-1829": 0.1024,
+        "1830-1839": 0.1809,
+        "1840-1849": 0.1533,
+        "1850-1859": 0.1597,
+        "1860-1869": 0.1585,
+        "1870-1879": 0.1923,
+        "1880-1889": 0.1421,
+        "1890-1899": 0.1839
+      }
+    },
+    "flashbacks_per_1k_sent": {
+      "spearman_rho": -0.453,
+      "p": 1e-05,
+      "partial_rho_controlling_sentence_length": 0.05,
+      "partial_p": 0.63839,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 67.15,
+        "1810-1819": 73.83,
+        "1820-1829": 80.735,
+        "1830-1839": 49.155,
+        "1840-1849": 54.14,
+        "1850-1859": 25.7,
+        "1860-1869": 43.01,
+        "1870-1879": 45.895,
+        "1880-1889": 46.745,
+        "1890-1899": 26.44
+      }
+    },
+    "tense_shifts_per_1k_sent": {
+      "spearman_rho": -0.4,
+      "p": 9e-05,
+      "partial_rho_controlling_sentence_length": -0.011,
+      "partial_p": 0.91749,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 514.8,
+        "1810-1819": 507.2,
+        "1820-1829": 509.15,
+        "1830-1839": 488.05,
+        "1840-1849": 482.6,
+        "1850-1859": 437.6,
+        "1860-1869": 502.0,
+        "1870-1879": 455.35,
+        "1880-1889": 460.25,
+        "1890-1899": 462.3
+      }
+    },
+    "retrospection_per_verb": {
+      "spearman_rho": -0.201,
+      "p": 0.05625,
+      "partial_rho_controlling_sentence_length": 0.023,
+      "partial_p": 0.83045,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.0806,
+        "1810-1819": 0.0719,
+        "1820-1829": 0.0804,
+        "1830-1839": 0.0612,
+        "1840-1849": 0.0568,
+        "1850-1859": 0.0555,
+        "1860-1869": 0.0585,
+        "1870-1879": 0.057,
+        "1880-1889": 0.0706,
+        "1890-1899": 0.0566
+      }
+    },
+    "prospection_per_verb": {
+      "spearman_rho": 0.089,
+      "p": 0.40012,
+      "partial_rho_controlling_sentence_length": 0.071,
+      "partial_p": 0.50466,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.0264,
+        "1810-1819": 0.0348,
+        "1820-1829": 0.0279,
+        "1830-1839": 0.0231,
+        "1840-1849": 0.033,
+        "1850-1859": 0.0219,
+        "1860-1869": 0.0326,
+        "1870-1879": 0.0335,
+        "1880-1889": 0.0284,
+        "1890-1899": 0.0283
+      }
+    },
+    "flashbacks_per_10k_words": {
+      "spearman_rho": -0.122,
+      "p": 0.25049,
+      "partial_rho_controlling_sentence_length": 0.095,
+      "partial_p": 0.37016,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 26.481,
+        "1810-1819": 22.206,
+        "1820-1829": 25.5495,
+        "1830-1839": 17.6455,
+        "1840-1849": 18.166,
+        "1850-1859": 14.946,
+        "1860-1869": 18.318,
+        "1870-1879": 18.178,
+        "1880-1889": 22.4115,
+        "1890-1899": 19.279
+      }
+    },
+    "flashbacks_hi_per_10k_words": {
+      "spearman_rho": -0.088,
+      "p": 0.40888,
+      "partial_rho_controlling_sentence_length": 0.044,
+      "partial_p": 0.67541,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 1.582,
+        "1810-1819": 1.618,
+        "1820-1829": 1.6655,
+        "1830-1839": 0.9535,
+        "1840-1849": 1.122,
+        "1850-1859": 0.778,
+        "1860-1869": 1.599,
+        "1870-1879": 0.9125,
+        "1880-1889": 1.484,
+        "1890-1899": 1.664
+      }
+    },
+    "flashforwards_per_10k_words": {
+      "spearman_rho": 0.284,
+      "p": 0.00646,
+      "partial_rho_controlling_sentence_length": 0.177,
+      "partial_p": 0.09276,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 2.492,
+        "1810-1819": 2.819,
+        "1820-1829": 2.6395,
+        "1830-1839": 1.8575,
+        "1840-1849": 3.396,
+        "1850-1859": 1.775,
+        "1860-1869": 3.341,
+        "1870-1879": 4.9805,
+        "1880-1889": 4.474,
+        "1890-1899": 3.211
+      }
+    },
+    "forward_jump_per_10k": {
+      "spearman_rho": 0.044,
+      "p": 0.68198,
+      "partial_rho_controlling_sentence_length": 0.068,
+      "partial_p": 0.5247,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 3.2315,
+        "1810-1819": 2.751,
+        "1820-1829": 2.363,
+        "1830-1839": 2.481,
+        "1840-1849": 3.347,
+        "1850-1859": 2.906,
+        "1860-1869": 2.584,
+        "1870-1879": 2.6995,
+        "1880-1889": 4.2825,
+        "1890-1899": 2.5
+      }
+    },
+    "retrospective_per_10k": {
+      "spearman_rho": 0.111,
+      "p": 0.29438,
+      "partial_rho_controlling_sentence_length": 0.2,
+      "partial_p": 0.0572,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 1.579,
+        "1810-1819": 1.636,
+        "1820-1829": 1.7295,
+        "1830-1839": 1.681,
+        "1840-1849": 1.772,
+        "1850-1859": 1.283,
+        "1860-1869": 1.745,
+        "1870-1879": 1.6845,
+        "1880-1889": 2.1565,
+        "1890-1899": 1.862
+      }
+    },
+    "abruptness_per_10k": {
+      "spearman_rho": 0.443,
+      "p": 1e-05,
+      "partial_rho_controlling_sentence_length": 0.388,
+      "partial_p": 0.00015,
+      "survives_bonferroni_after_control": true,
+      "decade_medians": {
+        "1800-1809": 1.819,
+        "1810-1819": 1.31,
+        "1820-1829": 1.787,
+        "1830-1839": 2.571,
+        "1840-1849": 2.032,
+        "1850-1859": 2.15,
+        "1860-1869": 2.24,
+        "1870-1879": 2.1315,
+        "1880-1889": 4.128,
+        "1890-1899": 3.494
+      }
+    },
+    "clock_time_per_10k": {
+      "spearman_rho": 0.505,
+      "p": 0.0,
+      "partial_rho_controlling_sentence_length": 0.266,
+      "partial_p": 0.0107,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.268,
+        "1810-1819": 0.396,
+        "1820-1829": 0.0,
+        "1830-1839": 0.7435,
+        "1840-1849": 0.478,
+        "1850-1859": 0.859,
+        "1860-1869": 1.521,
+        "1870-1879": 1.2675,
+        "1880-1889": 1.4455,
+        "1890-1899": 3.057
+      }
+    },
+    "calendar_date_per_10k": {
+      "spearman_rho": 0.315,
+      "p": 0.00235,
+      "partial_rho_controlling_sentence_length": 0.185,
+      "partial_p": 0.07848,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.0,
+        "1810-1819": 0.0,
+        "1820-1829": 0.0285,
+        "1830-1839": 0.0,
+        "1840-1849": 0.246,
+        "1850-1859": 0.208,
+        "1860-1869": 0.111,
+        "1870-1879": 0.098,
+        "1880-1889": 0.2105,
+        "1890-1899": 0.172
+      }
+    },
+    "median_scene_words": {
+      "spearman_rho": -0.065,
+      "p": 0.5435,
+      "partial_rho_controlling_sentence_length": 0.106,
+      "partial_p": 0.31912,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 2513.25,
+        "1810-1819": 3779,
+        "1820-1829": 3260.25,
+        "1830-1839": 3722.75,
+        "1840-1849": 2363.0,
+        "1850-1859": 2784,
+        "1860-1869": 3630.5,
+        "1870-1879": 3170.25,
+        "1880-1889": 3771.0,
+        "1890-1899": 2520
+      }
+    },
+    "retrospective_original_per_10k": {
+      "spearman_rho": 0.505,
+      "p": 0.0,
+      "partial_rho_controlling_sentence_length": 0.436,
+      "partial_p": 2e-05,
+      "survives_bonferroni_after_control": true,
+      "decade_medians": {
+        "1800-1809": 0.86,
+        "1810-1819": 0.552,
+        "1820-1829": 0.777,
+        "1830-1839": 0.853,
+        "1840-1849": 1.206,
+        "1850-1859": 1.205,
+        "1860-1869": 1.668,
+        "1870-1879": 1.1695,
+        "1880-1889": 1.754,
+        "1890-1899": 1.862
+      }
+    },
+    "retrospective_ross_per_10k": {
+      "spearman_rho": -0.498,
+      "p": 0.0,
+      "partial_rho_controlling_sentence_length": -0.335,
+      "partial_p": 0.00117,
+      "survives_bonferroni_after_control": true,
+      "decade_medians": {
+        "1800-1809": 0.7975,
+        "1810-1819": 0.812,
+        "1820-1829": 0.658,
+        "1830-1839": 0.672,
+        "1840-1849": 0.73,
+        "1850-1859": 0.057,
+        "1860-1869": 0.228,
+        "1870-1879": 0.2785,
+        "1880-1889": 0.0295,
+        "1890-1899": 0.143
+      }
+    }
+  },
+  "taxonomy_trends": {
+    "_bonferroni_threshold": 0.00417,
+    "sequence_per_10k": {
+      "spearman_rho": 0.536,
+      "p": 0.0,
+      "partial_rho_controlling_sentence_length": 0.388,
+      "partial_p": 0.00014,
+      "survives_bonferroni_after_control": true,
+      "decade_medians": {
+        "1800-1809": 2.1845,
+        "1810-1819": 1.777,
+        "1820-1829": 1.45,
+        "1830-1839": 2.97,
+        "1840-1849": 3.273,
+        "1850-1859": 3.655,
+        "1860-1869": 3.044,
+        "1870-1879": 3.3035,
+        "1880-1889": 5.5995,
+        "1890-1899": 4.724
+      }
+    },
+    "recollection_per_10k": {
+      "spearman_rho": -0.263,
+      "p": 0.01186,
+      "partial_rho_controlling_sentence_length": -0.317,
+      "partial_p": 0.0022,
+      "survives_bonferroni_after_control": true,
+      "decade_medians": {
+        "1800-1809": 1.39,
+        "1810-1819": 1.384,
+        "1820-1829": 0.5775,
+        "1830-1839": 0.3605,
+        "1840-1849": 0.304,
+        "1850-1859": 0.398,
+        "1860-1869": 0.724,
+        "1870-1879": 0.461,
+        "1880-1889": 0.475,
+        "1890-1899": 0.499
+      }
+    },
+    "duration_per_10k": {
+      "spearman_rho": 0.264,
+      "p": 0.0115,
+      "partial_rho_controlling_sentence_length": 0.166,
+      "partial_p": 0.11575,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 1.595,
+        "1810-1819": 1.862,
+        "1820-1829": 1.7345,
+        "1830-1839": 2.3025,
+        "1840-1849": 2.19,
+        "1850-1859": 3.499,
+        "1860-1869": 1.9,
+        "1870-1879": 2.6265,
+        "1880-1889": 2.6855,
+        "1890-1899": 2.542
+      }
+    },
+    "frequency_per_10k": {
+      "spearman_rho": 0.299,
+      "p": 0.00396,
+      "partial_rho_controlling_sentence_length": 0.2,
+      "partial_p": 0.05784,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 4.1685,
+        "1810-1819": 2.774,
+        "1820-1829": 3.2825,
+        "1830-1839": 3.5205,
+        "1840-1849": 4.186,
+        "1850-1859": 4.567,
+        "1860-1869": 4.071,
+        "1870-1879": 4.647,
+        "1880-1889": 4.8385,
+        "1890-1899": 4.689
+      }
+    },
+    "holiday_per_10k": {
+      "spearman_rho": 0.251,
+      "p": 0.01658,
+      "partial_rho_controlling_sentence_length": 0.127,
+      "partial_p": 0.22891,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.1415,
+        "1810-1819": 0.109,
+        "1820-1829": 0.0,
+        "1830-1839": 0.3295,
+        "1840-1849": 0.317,
+        "1850-1859": 0.802,
+        "1860-1869": 0.582,
+        "1870-1879": 0.683,
+        "1880-1889": 0.652,
+        "1890-1899": 0.179
+      }
+    },
+    "seasonal_per_10k": {
+      "spearman_rho": 0.056,
+      "p": 0.599,
+      "partial_rho_controlling_sentence_length": 0.06,
+      "partial_p": 0.56907,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.592,
+        "1810-1819": 0.674,
+        "1820-1829": 0.9255,
+        "1830-1839": 0.5975,
+        "1840-1849": 1.143,
+        "1850-1859": 0.836,
+        "1860-1869": 0.941,
+        "1870-1879": 0.817,
+        "1880-1889": 0.7755,
+        "1890-1899": 0.717
+      }
+    },
+    "meal_per_10k": {
+      "spearman_rho": 0.255,
+      "p": 0.01483,
+      "partial_rho_controlling_sentence_length": -0.03,
+      "partial_p": 0.77958,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 2.8275,
+        "1810-1819": 3.816,
+        "1820-1829": 1.004,
+        "1830-1839": 5.077,
+        "1840-1849": 3.302,
+        "1850-1859": 4.666,
+        "1860-1869": 7.346,
+        "1870-1879": 4.1225,
+        "1880-1889": 3.855,
+        "1890-1899": 5.002
+      }
+    },
+    "biographical_per_10k": {
+      "spearman_rho": -0.233,
+      "p": 0.02644,
+      "partial_rho_controlling_sentence_length": -0.229,
+      "partial_p": 0.02902,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.1965,
+        "1810-1819": 0.184,
+        "1820-1829": 0.1295,
+        "1830-1839": 0.0615,
+        "1840-1849": 0.159,
+        "1850-1859": 0.08,
+        "1860-1869": 0.163,
+        "1870-1879": 0.058,
+        "1880-1889": 0.047,
+        "1890-1899": 0.0
+      }
+    },
+    "travel_per_10k": {
+      "spearman_rho": -0.255,
+      "p": 0.01472,
+      "partial_rho_controlling_sentence_length": -0.12,
+      "partial_p": 0.25657,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.559,
+        "1810-1819": 0.337,
+        "1820-1829": 0.385,
+        "1830-1839": 0.294,
+        "1840-1849": 0.318,
+        "1850-1859": 0.311,
+        "1860-1869": 0.152,
+        "1870-1879": 0.1685,
+        "1880-1889": 0.2345,
+        "1890-1899": 0.286
+      }
+    },
+    "year_per_10k": {
+      "spearman_rho": 0.131,
+      "p": 0.21598,
+      "partial_rho_controlling_sentence_length": 0.135,
+      "partial_p": 0.20331,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.0,
+        "1810-1819": 0.0,
+        "1820-1829": 0.13,
+        "1830-1839": 0.0,
+        "1840-1849": 0.541,
+        "1850-1859": 0.0,
+        "1860-1869": 0.0,
+        "1870-1879": 0.0655,
+        "1880-1889": 0.1315,
+        "1890-1899": 0.086
+      }
+    },
+    "iterative_scene_share": {
+      "spearman_rho": -0.04,
+      "p": 0.7083,
+      "partial_rho_controlling_sentence_length": -0.003,
+      "partial_p": 0.98152,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.2705,
+        "1810-1819": 0.222,
+        "1820-1829": 0.3165,
+        "1830-1839": 0.147,
+        "1840-1849": 0.158,
+        "1850-1859": 0.227,
+        "1860-1869": 0.239,
+        "1870-1879": 0.3085,
+        "1880-1889": 0.2125,
+        "1890-1899": 0.174
+      }
+    },
+    "unmarked_scene_share": {
+      "spearman_rho": -0.095,
+      "p": 0.38027,
+      "partial_rho_controlling_sentence_length": -0.162,
+      "partial_p": 0.13261,
+      "survives_bonferroni_after_control": false,
+      "decade_medians": {
+        "1800-1809": 0.052,
+        "1810-1819": 0.067,
+        "1820-1829": 0.0,
+        "1830-1839": 0.0,
+        "1840-1849": 0.065,
+        "1850-1859": 0.0,
+        "1860-1869": 0.0,
+        "1870-1879": 0.023,
+        "1880-1889": 0.012,
+        "1890-1899": 0.0
+      }
+    }
+  },
+  "gender": {
+    "_bonferroni_threshold": 0.00313,
+    "mean_sentence_words": {
+      "female_median": 22.91,
+      "male_median": 22.695,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1106.0,
+      "p": 0.57014,
+      "survives_bonferroni": false
+    },
+    "past_perfect_share": {
+      "female_median": 0.1244,
+      "male_median": 0.1119,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1234.0,
+      "p": 0.1131,
+      "survives_bonferroni": false
+    },
+    "present_share": {
+      "female_median": 0.129,
+      "male_median": 0.1602,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 883.0,
+      "p": 0.23199,
+      "survives_bonferroni": false
+    },
+    "flashbacks_per_1k_sent": {
+      "female_median": 51.71,
+      "male_median": 42.48,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1222.0,
+      "p": 0.13646,
+      "survives_bonferroni": false
+    },
+    "tense_shifts_per_1k_sent": {
+      "female_median": 493.5,
+      "male_median": 477.55,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1293.0,
+      "p": 0.04007,
+      "survives_bonferroni": false
+    },
+    "retrospection_per_verb": {
+      "female_median": 0.0692,
+      "male_median": 0.0564,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1285.0,
+      "p": 0.04665,
+      "survives_bonferroni": false
+    },
+    "prospection_per_verb": {
+      "female_median": 0.0308,
+      "male_median": 0.0258,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1349.0,
+      "p": 0.01249,
+      "survives_bonferroni": false
+    },
+    "flashbacks_per_10k_words": {
+      "female_median": 23.091,
+      "male_median": 17.9815,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1263.0,
+      "p": 0.06957,
+      "survives_bonferroni": false
+    },
+    "flashbacks_hi_per_10k_words": {
+      "female_median": 1.496,
+      "male_median": 1.136,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1243.5,
+      "p": 0.09694,
+      "survives_bonferroni": false
+    },
+    "flashforwards_per_10k_words": {
+      "female_median": 3.539,
+      "male_median": 2.843,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1201.0,
+      "p": 0.18606,
+      "survives_bonferroni": false
+    },
+    "forward_jump_per_10k": {
+      "female_median": 3.087,
+      "male_median": 2.686,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1123.0,
+      "p": 0.48215,
+      "survives_bonferroni": false
+    },
+    "retrospective_per_10k": {
+      "female_median": 1.841,
+      "male_median": 1.645,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1224.0,
+      "p": 0.13233,
+      "survives_bonferroni": false
+    },
+    "abruptness_per_10k": {
+      "female_median": 2.24,
+      "male_median": 2.5725,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 948.0,
+      "p": 0.49712,
+      "survives_bonferroni": false
+    },
+    "clock_time_per_10k": {
+      "female_median": 0.69,
+      "male_median": 0.7315,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 881.5,
+      "p": 0.22633,
+      "survives_bonferroni": false
+    },
+    "calendar_date_per_10k": {
+      "female_median": 0.047,
+      "male_median": 0.13,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 796.5,
+      "p": 0.05132,
+      "survives_bonferroni": false
+    },
+    "median_scene_words": {
+      "female_median": 3075.0,
+      "male_median": 3108.0,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1127.0,
+      "p": 0.46257,
+      "survives_bonferroni": false
+    }
+  },
+  "taxonomy_gender": {
+    "_bonferroni_threshold": 0.00417,
+    "sequence_per_10k": {
+      "female_median": 3.087,
+      "male_median": 3.4355,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 856.5,
+      "p": 0.15981,
+      "survives_bonferroni": false
+    },
+    "recollection_per_10k": {
+      "female_median": 0.515,
+      "male_median": 0.5075,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1196.0,
+      "p": 0.19962,
+      "survives_bonferroni": false
+    },
+    "duration_per_10k": {
+      "female_median": 2.058,
+      "male_median": 2.496,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 905.5,
+      "p": 0.30936,
+      "survives_bonferroni": false
+    },
+    "frequency_per_10k": {
+      "female_median": 4.633,
+      "male_median": 3.453,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1439.0,
+      "p": 0.00132,
+      "survives_bonferroni": true
+    },
+    "holiday_per_10k": {
+      "female_median": 0.365,
+      "male_median": 0.2755,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1156.5,
+      "p": 0.33001,
+      "survives_bonferroni": false
+    },
+    "seasonal_per_10k": {
+      "female_median": 1.039,
+      "male_median": 0.5865,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1453.5,
+      "p": 0.00087,
+      "survives_bonferroni": true
+    },
+    "meal_per_10k": {
+      "female_median": 3.816,
+      "male_median": 3.5915,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1055.0,
+      "p": 0.87066,
+      "survives_bonferroni": false
+    },
+    "biographical_per_10k": {
+      "female_median": 0.097,
+      "male_median": 0.0615,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 1196.0,
+      "p": 0.19227,
+      "survives_bonferroni": false
+    },
+    "travel_per_10k": {
+      "female_median": 0.27,
+      "male_median": 0.3325,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 877.0,
+      "p": 0.21323,
+      "survives_bonferroni": false
+    },
+    "year_per_10k": {
+      "female_median": 0.045,
+      "male_median": 0.105,
+      "n_female": 47,
+      "n_male": 44,
+      "U": 854.0,
+      "p": 0.13874,
+      "survives_bonferroni": false
+    },
+    "iterative_scene_share": {
+      "female_median": 0.255,
+      "male_median": 0.222,
+      "n_female": 45,
+      "n_male": 43,
+      "U": 1128.0,
+      "p": 0.18164,
+      "survives_bonferroni": false
+    },
+    "unmarked_scene_share": {
+      "female_median": 0.026,
+      "male_median": 0.0,
+      "n_female": 45,
+      "n_male": 43,
+      "U": 982.0,
+      "p": 0.9019,
+      "survives_bonferroni": false
+    }
+  }
+}
