@@ -38,6 +38,10 @@ class TenseResult:
     confidence: float
     has_past_perfect: bool
     matched_tenses: set = field(default_factory=set)
+    # every verb construction found, as (tense, char offset of its first
+    # token within the sentence) -- the word-level signal granularity.py
+    # builds on, finer than the one dominant tense per sentence
+    constructions: list = field(default_factory=list)
 
 
 # how many tokens ahead of an aux ("had"/"has"/"would") to look for its
@@ -62,38 +66,40 @@ def _target_ahead(toks: list, start_idx: int, target_tags: tuple) -> bool:
     return False
 
 
-def _verb_patterns(doc) -> set:
-    """Scan tokens for the constructions each tense rule depends on. Each
-    token contributes to at most one pattern (elif chain) so an aux
-    "had"/"has"/"would" that's part of a perfect/future-in-past
-    construction isn't ALSO double-counted as its own bare-verb tense."""
-    found = set()
+def _verb_constructions(doc) -> list[tuple[str, int]]:
+    """Scan tokens for the constructions each tense rule depends on, as
+    (tense, char offset). Each token contributes to at most one pattern
+    (elif chain) so an aux "had"/"has"/"would" that's part of a
+    perfect/future-in-past construction isn't ALSO double-counted as its
+    own bare-verb tense."""
+    found = []
     toks = list(doc)
     for i, tok in enumerate(toks):
         low = tok.text.lower()
         if low == "had" and _target_ahead(toks, i, ("VBN",)):
-            found.add(TENSE_PAST_PERFECT)
+            found.append((TENSE_PAST_PERFECT, tok.idx))
         elif low in ("has", "have") and _target_ahead(toks, i, ("VBN",)):
-            found.add(TENSE_PRESENT_PERFECT)
+            found.append((TENSE_PRESENT_PERFECT, tok.idx))
         elif low == "would" and _target_ahead(toks, i, ("VB",)):
-            found.add(TENSE_FUTURE_IN_PAST)
+            found.append((TENSE_FUTURE_IN_PAST, tok.idx))
         elif tok.tag_ == "VBD":
             # includes a standalone "had" used as a full verb ("she had a
             # book"), not just as part of a perfect construction -- that
             # case falls through to here since it didn't match the first
             # branch (no VBN found ahead of it).
-            found.add(TENSE_PAST_SIMPLE)
+            found.append((TENSE_PAST_SIMPLE, tok.idx))
         elif tok.tag_ in ("VBP", "VBZ"):
-            found.add(TENSE_PRESENT)
+            found.append((TENSE_PRESENT, tok.idx))
     return found
 
 
 def classify_sentence(doc) -> TenseResult:
     """doc: a spaCy Doc for one sentence (from nlp_setup.pipe_sentences)."""
-    found = _verb_patterns(doc)
+    constructions = _verb_constructions(doc)
+    found = {tense for tense, _ in constructions}
     if not found:
         # no verb found at all -- a fragment or bare dialogue tag ("Eh!")
-        return TenseResult(TENSE_OTHER, 0.3, False, found)
+        return TenseResult(TENSE_OTHER, 0.3, False, found, constructions)
     dominant = next((t for t in _PRIORITY if t in found), TENSE_OTHER)
     confidence = 1.0 if len(found) == 1 else 0.6
-    return TenseResult(dominant, confidence, TENSE_PAST_PERFECT in found, found)
+    return TenseResult(dominant, confidence, TENSE_PAST_PERFECT in found, found, constructions)

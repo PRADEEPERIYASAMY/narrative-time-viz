@@ -51,9 +51,11 @@ def _cue_regex(phrases):
     return re.compile(r"\b(?:" + "|".join(re.escape(p) for p in phrases) + r")\b", re.IGNORECASE)
 
 
-# per candidate tense: (cue-phrase regex, temporal-marker category that counts as a cue)
+# per candidate tense: (cue-phrase regex, temporal-marker categories that count as a cue).
+# "recollection" (a character remembering) joined in Weeks 9-10 with the
+# Ross taxonomy; its phrases overlap RETROSPECTIVE_CUES, hence the de-dup below.
 _CUES = {
-    TENSE_PAST_PERFECT: (_cue_regex(RETROSPECTIVE_CUES), "retrospective"),
+    TENSE_PAST_PERFECT: (_cue_regex(RETROSPECTIVE_CUES), ("retrospective", "recollection")),
     TENSE_FUTURE_IN_PAST: (_cue_regex(PROSPECTIVE_CUES), "forward_jump"),
 }
 
@@ -86,7 +88,7 @@ def detect(sentences: list[dict], features: list[dict]) -> list[dict]:
         reversal = background == TENSE_PAST_SIMPLE
         cue_regex, marker_category = _CUES[tense]
         cue_hits = [c.lower() for c in cue_regex.findall(sentences[i]["text"])]
-        cue_hits += phrases_in(features[i]["marker_phrases"], marker_category)
+        cue_hits = list(dict.fromkeys(cue_hits + phrases_in(features[i]["marker_phrases"], marker_category)))
         cue = bool(cue_hits)
         sustained = any(0 <= j < n and features[j]["dominant_tense"] == tense for j in (i - 1, i + 1))
 

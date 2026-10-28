@@ -1,0 +1,239 @@
+pattern,match,category,direction,confidence,story_time_effect,duration_modifier,status,source,notes
+years later,phrase,forward_jump,forward,0.9,+delta,,active,phase1,
+months later,phrase,forward_jump,forward,0.9,+delta,,active,phase1,
+days later,phrase,forward_jump,forward,0.9,+delta,,active,phase1,
+weeks later,phrase,forward_jump,forward,0.9,+delta,,active,phase1,
+the following day,phrase,forward_jump,forward,0.9,+1 day,,active,phase1,also in Ross taxonomy
+the next day,phrase,forward_jump,forward,0.9,+1 day,,active,phase1,also in Ross taxonomy
+years before,phrase,retrospective,backward,0.8,-delta,,active,phase1,also in Ross taxonomy
+long ago,phrase,retrospective,backward,0.8,-delta,,active,phase1,also in Ross taxonomy
+years ago,phrase,retrospective,backward,0.8,-delta,,active,phase1,also in Ross taxonomy
+in the meantime,phrase,simultaneity,parallel,0.8,none,,active,phase1,also in Ross taxonomy
+meanwhile,phrase,simultaneity,parallel,0.8,none,,active,phase1,also in Ross taxonomy
+at dawn,phrase,time_of_day,positional,0.6,day-part anchor,,active,phase1,also in Ross taxonomy
+at dusk,phrase,time_of_day,positional,0.6,day-part anchor,,active,phase1,also in Ross taxonomy
+some time later,phrase,forward_jump,forward,0.8,+delta,,active,weeks03-04,
+not long after,phrase,forward_jump,forward,0.7,+delta,,active,weeks03-04,
+before long,phrase,forward_jump,forward,0.7,+delta,,active,weeks03-04,also in Ross taxonomy
+from then on,phrase,forward_jump,forward,0.7,+delta,,active,weeks03-04,
+ever since,phrase,retrospective,backward,0.8,-delta,,active,weeks03-04,also in Ross taxonomy
+in those days,phrase,retrospective,backward,0.6,-delta,,active,weeks03-04,also in Ross taxonomy
+until now,phrase,retrospective,backward,0.7,-delta,,active,weeks03-04,
+that same day,phrase,anchor,positional,0.8,none,,active,weeks03-04,
+by now,phrase,anchor,positional,0.8,none,,active,weeks03-04,also in Ross taxonomy
+it was not until,phrase,anchor,positional,0.7,none,,active,weeks03-04,
+suddenly,phrase,abruptness,unknown,0.9,none,,active,weeks03-04,also in Ross taxonomy
+all at once,phrase,abruptness,unknown,0.9,none,,active,weeks03-04,also in Ross taxonomy
+the next morning,phrase,forward_jump,forward,0.9,+1 day,,active,ross,High precision forward cue
+the morrow,phrase,forward_jump,forward,0.8,+1 day,,active,ross,Period-specific relative jump
+the morrowing,phrase,forward_jump,forward,0.8,+1 day,,active,ross,0 hits
+on the morrow,phrase,forward_jump,forward,0.8,+1 day,,active,ross,Period-specific relative jump
+a year later,phrase,forward_jump,forward,0.9,+1 year,,covered,ross,"matched by the 'N units later' pattern, with any number"
+after an interval,phrase,forward_jump,forward,0.7,+delta,,active,ross,Relative progression
+afterward,phrase,sequence,forward,0.7,+delta,,active,ross,orders events without stating a gap; counting it as a jump would repeat the 'suddenly' problem
+afterwards,phrase,sequence,forward,0.7,+delta,,active,ross,"orders events without stating a gap; counting it as a jump would repeat the 'suddenly' problem; 1,454 hits"
+subsequently,phrase,sequence,forward,0.7,+delta,,active,ross,orders events without stating a gap; counting it as a jump would repeat the 'suddenly' problem
+later,phrase,sequence,forward,0.6,+delta,,active,ross,"mostly 'sooner or later', 'a moment later', 'the later dates'; orders events without stating a gap; counting it as a jump would repeat the 'suddenly' problem"
+in the course of time,phrase,forward_jump,forward,0.7,+delta,,active,ross,Relative progression
+some days elapsed,phrase,forward_jump,forward,0.8,+delta,,covered,ross,matched by the 'N units later' pattern ('several days elapsed')
+ere long,phrase,forward_jump,forward,0.7,+delta,,active,ross,Period-specific relative jump
+after a time,phrase,forward_jump,forward,0.7,+delta,,active,ross,Period-specific relative jump
+after some time,phrase,forward_jump,forward,0.7,+delta,,active,ross,Period-specific relative jump
+in process of time,phrase,forward_jump,forward,0.8,+delta,,active,ross,Period-specific relative jump
+when the day broke,phrase,forward_jump,forward,0.8,+1 day,,active,ross,Period-specific relative jump
+by the next morning,phrase,forward_jump,forward,0.9,+1 day,,active,ross,Period-specific relative jump
+before the week was out,phrase,forward_jump,forward,0.9,+delta,,active,ross,Caps duration to < 7 days
+as the evening closed in,phrase,forward_jump,forward,0.8,+delta,,active,ross,Period-specific relative jump
+soon after,phrase,sequence,forward,0.7,+delta,,active,ross,"usually 'soon after his arrival': succession, small gap"
+some days later,phrase,forward_jump,forward,0.7,+delta,,covered,ross,matched by the 'N units later' pattern
+shortly after,phrase,sequence,forward,0.7,+delta,,active,ross,"succession, small gap"
+presently,phrase,sequence,forward,0.5,+delta,,active,ross,"1,641 hits; in period usage 'soon, within the scene' ('presently re-entering')"
+by and by,phrase,sequence,forward,0.6,+delta,,active,ross,orders events without stating a gap; counting it as a jump would repeat the 'suddenly' problem
+in due course,phrase,forward_jump,forward,0.7,+delta,,active,ross,Relative progression
+when the morning came,phrase,forward_jump,forward,0.8,+1 day,,active,ross,Relative progression
+at a later period,phrase,forward_jump,forward,0.7,+delta,,active,ross,Macro relative jump
+prior to,phrase,retrospective,backward,0.8,-delta,,active,ross,often a local before ('prior to her union')
+previously,phrase,retrospective,backward,0.8,-delta,,active,ross,Analepsis indicator
+once upon a time,phrase,retrospective,backward,0.6,-delta,,active,ross,Analepsis indicator
+formerly,phrase,retrospective,backward,0.8,-delta,,active,ross,Analepsis indicator
+i remembered,phrase,recollection,backward,0.8,none,,active,ross,a character's memory; also a flashback cue
+she remembered,phrase,recollection,backward,0.8,none,,active,ross,a character's memory; also a flashback cue
+he remembered,phrase,recollection,backward,0.8,none,,active,ross,a character's memory; also a flashback cue
+recalled to mind,phrase,recollection,backward,0.8,none,,active,ross,a character's memory; also a flashback cue
+recollected,phrase,recollection,backward,0.6,none,,active,ross,often 'remembered to' ('recollected some professional business')
+at the same hour,phrase,simultaneity,parallel,0.8,none,,active,ross,Parallel timeline indicator
+at the same time,phrase,simultaneity,parallel,0.4,none,,active,ross,audit: mostly concessive or coordinating ('at the same time he ventured'); Ross 0.8
+o'clock,phrase,anchor,positional,0.9,day-part anchor,,covered,ross,matched by the clock_time pattern (with the hour)
+morning,phrase,anchor,positional,0.7,day-part anchor,,covered,ross,"bare word 5,803 hits; matched only with a determiner or preposition (day-part pattern)"
+afternoon,phrase,anchor,positional,0.7,day-part anchor,,covered,ross,"bare word 1,492 hits; day-part pattern"
+evening,phrase,anchor,positional,0.7,day-part anchor,,covered,ross,"bare word 4,478 hits; day-part pattern"
+night,phrase,anchor,positional,0.7,day-part anchor,,covered,ross,"bare word 9,004 hits ('night and day', 'good night'); day-part pattern"
+midnight,phrase,time_of_day,positional,0.9,day-part anchor,,active,ross,Intradiegetic grounding
+noon,phrase,time_of_day,positional,0.9,day-part anchor,,active,ross,Intradiegetic grounding
+bedtime,phrase,time_of_day,positional,0.8,day-part anchor,,active,ross,Routine marker
+waking up,phrase,time_of_day,positional,0.8,day-part anchor,,active,ross,Routine marker
+breakfast,phrase,meal,positional,0.8,day-part anchor,,active,ross,Continuous pacing indicator
+lunch,phrase,meal,positional,0.8,day-part anchor,,active,ross,Continuous pacing indicator
+luncheon,phrase,meal,positional,0.8,day-part anchor,,active,ross,Continuous pacing indicator
+tea,phrase,meal,positional,0.8,day-part anchor,,excluded,ross,"1,510 hits, mostly the drink or its objects ('tea-board', 'Tea is nothing more than the leaf of a tree'); 'at/after tea' kept by pattern"
+teatime,phrase,meal,positional,0.8,day-part anchor,,covered,ross,matched by the tea-time pattern
+dinner,phrase,meal,positional,0.8,day-part anchor,,active,ross,Continuous pacing indicator
+supper,phrase,meal,positional,0.8,day-part anchor,,active,ross,Continuous pacing indicator
+dine,phrase,meal,positional,0.8,day-part anchor,,active,ross,Continuous pacing indicator
+day,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (12,944 hits); units are matched inside duration and 'N units later' patterns instead"
+days,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (4,281 hits); units are matched inside duration and 'N units later' patterns instead"
+week,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (1,752 hits); units are matched inside duration and 'N units later' patterns instead"
+weeks,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (1,071 hits); units are matched inside duration and 'N units later' patterns instead"
+fortnight,phrase,anchor,positional,0.8,anchor,,excluded,ross,bare unit (410 hits); units are matched inside duration and 'N units later' patterns instead
+month,phrase,anchor,positional,0.5,anchor,,excluded,ross,bare unit (861 hits); units are matched inside duration and 'N units later' patterns instead
+months,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (1,669 hits); units are matched inside duration and 'N units later' patterns instead"
+year,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (2,438 hits); units are matched inside duration and 'N units later' patterns instead"
+years,phrase,anchor,positional,0.5,anchor,,excluded,ross,"bare unit (4,572 hits); units are matched inside duration and 'N units later' patterns instead"
+century,phrase,anchor,positional,0.5,anchor,,excluded,ross,bare unit (363 hits); units are matched inside duration and 'N units later' patterns instead
+centuries,phrase,anchor,positional,0.5,anchor,,excluded,ross,bare unit (217 hits); units are matched inside duration and 'N units later' patterns instead
+sunrise,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+sunset,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+twilight,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+dawn,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+dusk,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+daybreak,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+nightfall,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+sun was rising,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+sun was setting,phrase,time_of_day,positional,0.6,day-part anchor,,active,ross,Fine-grained placement
+for three days,phrase,duration,forward,0.9,+3 days,,covered,ross,generalized: 'for N units' pattern
+during the next week,phrase,duration,forward,0.9,+1 week,,covered,ross,generalized: 'during/through the X' pattern
+after two months,phrase,duration,forward,0.9,+2 months,,covered,ross,generalized: 'N units later/after' pattern
+a fortnight later,phrase,duration,forward,0.9,+14 days,,covered,ross,matched by the 'N units later' pattern
+in a week’s time,phrase,duration,forward,0.9,+1 week,,covered,ross,generalized: 'in N units' time' pattern
+through the whole summer,phrase,duration,forward,0.8,+1 season,,covered,ross,generalized: 'during/through the X' pattern
+all that winter,phrase,duration,forward,0.8,+1 season,,covered,ross,generalized: 'all that X' pattern
+spring,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,covered,ross,"bare word 895 hits, often the noun/verb ('the secret spring', 'the repeating spring'); season pattern"
+summer,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,covered,ross,"bare word 1,143 hits incl. 'summer-house', 'summer freshness'; season pattern"
+autumn,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,covered,ross,season pattern
+winter,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,covered,ross,season pattern
+fall,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,excluded,ross,"1,554 hits, almost all the verb or noun; British usage is 'autumn'. 'the fall of the year/leaf' kept by pattern"
+equinox,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+solstice,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+harvest time,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+harvest,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+the first frost,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+the leaves fell,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+the snow melted,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+the long evenings,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+the heat of the season,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+the cutting of the hay,phrase,seasonal,weak_forward_or_positional,0.4,annual anchor,,active,ross,Low confidence floor to prevent sudden spikes
+lady day,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,"0 hits as spelled; the period form is 'Lady-day' (14 hits), matched by pattern"
+midsummer,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,pattern excludes 'Midsummer Night's Dream'
+michaelmas,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Fixed autumn quarter-day (Sept 29)
+martinmas,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Fixed winter quarter-day (Nov 11)
+christmas day,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,period form often 'Christmas-day'; matched by pattern
+christmas,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Fixed winter holiday
+easter,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+Lent,phrase_cs,holiday,positional,0.9,seasonal_anchor,,active,ross,case-sensitive: 196 of 214 hits were the verb 'lent'
+ash wednesday,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+good friday,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+whitsuntide,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+whitsun,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+Advent,phrase_cs,holiday,positional,0.9,seasonal_anchor,,active,ross,case-sensitive: all 46 hits were 'advent' = arrival ('his unexpected advent')
+Epiphany,phrase_cs,holiday,positional,0.9,seasonal_anchor,,active,ross,case-sensitive
+twelfth night,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+allhallows,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+all saints,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,12 of 14 hits are All Saints' College (Robert Elsmere); pattern requires 'Day'
+saint stephen's day,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+sabbath,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Liturgical calendar shift
+may day,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,matched by pattern with 'May-day'
+midsummer eve,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Festive breakpoint anchor
+maying,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Festive breakpoint anchor
+harvest home,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Festive breakpoint anchor
+boxing day,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Festive breakpoint anchor
+new year's eve,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,matched by pattern with hyphen variants
+new year's day,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,matched by pattern with hyphen variants
+yule,phrase,holiday,positional,0.9,seasonal_anchor,,covered,ross,"450 of 451 hits are a surname (Alfred and Marian Yule, New Grub Street); pattern requires 'at/till Yule', 'Yuletide'"
+yuletide,phrase,holiday,positional,0.9,seasonal_anchor,,active,ross,Festive breakpoint anchor
+she was now ten years old,phrase,biographical,forward,0.8,+delta,,covered,ross,0 hits; generalized: 'was now N (years old)' pattern
+he was now fifteen,phrase,biographical,forward,0.8,+delta,,covered,ross,0 hits; generalized: 'was now N' pattern
+he reached his majority,phrase,biographical,forward,0.9,+delta,,covered,ross,0 hits; generalized: 'reached/attained his/her majority'
+after her marriage,phrase,biographical,forward,0.8,+delta,,covered,ross,generalized: 'after his/her/their marriage'
+when he came of age,phrase,biographical,forward,0.9,+delta,,covered,ross,generalized: 'came/come of age'
+at the end of the term,phrase,biographical,forward,0.8,+delta,,covered,ross,generalized: 'at the end of the term/half/session'
+upon her father’s death,phrase,biographical,forward,0.8,+delta,,covered,ross,0 hits; generalized: 'after his/her (X's) death/funeral'
+after the funeral,phrase,biographical,forward,0.8,+delta,,covered,ross,generalized: 'after the funeral'
+when the child was born,phrase,biographical,forward,0.9,+delta,,covered,ross,0 hits; generalized: 'when the/her child/son was born'
+after her recovery,phrase,biographical,forward,0.8,+delta,,covered,ross,generalized: 'after his/her recovery'
+after a week’s journey,phrase,travel,forward,0.8,+1 week,,covered,ross,0 hits; generalized: journey pattern
+after a journey of three days,phrase,travel,forward,0.9,+3 days,,covered,ross,0 hits; generalized: journey pattern
+the next post,phrase,travel,forward,0.7,+delta,,covered,ross,"generalized: 'the next post', 'by return of post'"
+in a week’s ride,phrase,travel,forward,0.8,+1 week,,covered,ross,0 hits; generalized: journey pattern
+before nightfall,phrase,travel,forward,0.7,+delta,,active,ross,Implied movement delta
+they reached London,phrase,travel,forward,0.8,+delta,,active,ross,Implied movement delta
+arrived at Edinburgh,phrase,travel,forward,0.8,+delta,,active,ross,Implied movement delta
+arrived in London,phrase,travel,forward,0.8,+delta,,active,ross,Implied movement delta
+the next morning at the inn,phrase,travel,forward,0.9,+1 day,,active,ross,Implied movement delta
+every sunday,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'every X' pattern
+used to,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,"2,105 hits incl. 'used to walking', 'become used to'; habitual pattern skips be/get/become + 'used to'"
+was accustomed to,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Habitual routine indicator
+were accustomed to,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Habitual routine indicator
+made a point of,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Habitual routine indicator
+constantly,phrase,frequency,parallel,0.6,multi-unit,multi-unit,active,ross,often continuous rather than repeated ('constantly present to his thoughts')
+habitually,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Habitual routine indicator
+customarily,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Habitual routine indicator
+every day,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'every X' pattern
+every week,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'every X' pattern
+every month,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'every X' pattern
+every year,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'every X' pattern
+each morning,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'each X' pattern
+each evening,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'each X' pattern
+night after night,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'X after X' pattern
+day after day,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'X after X' pattern
+week after week,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'X after X' pattern
+sunday after sunday,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'X after X' pattern
+many a time,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Quantified routine multiplier
+time and again,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Quantified routine multiplier
+as was his custom,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Quantified routine multiplier
+as was her custom,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Quantified routine multiplier
+repeatedly,phrase,frequency,parallel,0.7,multi-unit,multi-unit,active,ross,Quantified routine multiplier
+on sundays,phrase,frequency,parallel,0.8,multi-unit,multi-unit,covered,ross,generalized: 'on Sundays/Mondays/...' pattern
+usually,phrase,frequency,parallel,0.6,multi-unit,multi-unit,active,ross,"often a general truth, not a story habit ('what is usually called good luck')"
+for weeks together,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,ross,Habitual routine indicator
+\b(?:the )?(?:next|following) (?:morning|day|evening|night|afternoon|week|month|year|spring|summer|autumn|winter)\b,regex,forward_jump,forward,0.9,parsed,,active,audit,"'the next morning', 'next day' (494 hits without 'the'), 'the following spring'"
+\b(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\s+(?:(?!(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\b|(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)\b)\w+\s+)?(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)\s+(?:later|afterwards?|after|elapsed|passed|went by|had passed|had elapsed|rolled on|rolled by)\b,regex,forward_jump,forward,0.85,parsed,,active,audit,"'two years later', 'a twelvemonth after', 'several days elapsed'"
+\bthe (?:morning|day|night|week) after\b,regex,forward_jump,forward,0.8,parsed,,active,audit,
+\bfor (?:(?:nearly|almost|about|upwards of|more than|the space of|the next|the following|the last|full|fully|quite)\s+)?(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\s+(?:(?!(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\b|(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)\b)\w+\s+)?(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)\b,regex,duration,forward,0.8,parsed,,active,audit,"'for three days', 'for the space of a twelvemonth'"
+\b(?:during|through|throughout) (?:the |that |this |all that |the whole |the next |the following |the ensuing )?(?:whole |entire )?(?:week|month|year|summer|winter|spring|autumn|season)s?\b,regex,duration,forward,0.8,,,active,audit,"'during the next week', 'through the whole summer'"
+\ball (?:that|the|this) (?:day|night|week|month|year|summer|winter|spring|autumn|morning|evening|afternoon)\b,regex,duration,forward,0.7,,,active,audit,"'all that winter', 'all the morning'"
+\b(?:in|within) (?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\s+(?:(?!(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\b|(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)\b)\w+\s+)?(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)['’]?s?['’]? time\b,regex,duration,forward,0.8,parsed,,active,audit,'in a week's time'
+\b(?:that|this|the same|one|last|yesterday|to-morrow|tomorrow|in the|at|by|towards?|till|until|late in the|early in the) (?:morning|forenoon|afternoon|evening|night)\b,regex,time_of_day,positional,0.6,,,active,audit,"Ross's day-part words, with a determiner or preposition; 'forenoon' added"
+cock-crow,phrase,time_of_day,positional,0.8,,,active,audit,period day-part
+\b(?:at|after|before|till|until|to|over) tea\b|\btea-?time\b,regex,meal,positional,0.8,,,active,audit,"tea as a time of day, not the drink"
+\b(?:in|during|through|throughout|all|that|this|last|next|the following|early in the|late in the|the)\s+(?:spring|summer|autumn|winter)\b(?![- ]?house),regex,seasonal,weak_forward_or_positional,0.4,,,active,audit,"Ross's seasons, in context; 'summer-house' excluded"
+\bthe fall of the (?:year|leaf)\b,regex,seasonal,weak_forward_or_positional,0.6,,,active,audit,
+\bLady[- ][Dd]ay\b,regex_cs,holiday,positional,0.9,,,active,audit,"quarter-day (March 25); period spelling 'Lady-day', 14 hits"
+\bChristmas[- ](?:[Dd]ay|[Ee]ve|tide)\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bNew[- ]Year['’]?s?[- ](?:[Dd]ay|[Ee]ve)\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bMay[- ][Dd]ay\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bMidsummer\b(?![- ][Nn]ight),regex_cs,holiday,positional,0.9,,,active,audit,excludes 'Midsummer Night's Dream'
+\b(?:at|till|until|before|after|since) Yule\b|\bYule-?tide\b|\bYule[- ]log\b,regex_cs,holiday,positional,0.9,,,active,audit,'Yule' alone is mostly a surname in this corpus
+\bAll[- ]Saints['’]?[- ][Dd]ay\b|\bAll[- ]Hallows\b|\bHallowe['’]?en\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bWhit[- ]?(?:Monday|Sunday|Tuesday)\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bValentine['’]s[- ][Dd]ay\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bTwelfth[- ][Dd]ay\b,regex_cs,holiday,positional,0.9,,,active,audit,
+\bShrove[- ]Tuesday\b,regex_cs,holiday,positional,0.9,,,active,audit,
+Candlemas,phrase_cs,holiday,positional,0.9,,,active,audit,Scottish/agricultural term day
+Lammas,phrase_cs,holiday,positional,0.9,,,active,audit,Scottish/agricultural term day
+quarter-day,phrase,holiday,positional,0.9,,,active,audit,rent day; 6 hits
+\b(?:came|come|comes|coming) of age\b|\b(?:reached|attained|reach|attain) (?:his|her|their) majority\b,regex,biographical,forward,0.9,+delta,,active,audit,
+\bafter (?:his|her|their|the) (?:marriage|wedding|recovery|confinement)\b|\bafter (?:his|her|their|the)(?: \w+['’]s)? (?:death|funeral)\b,regex,biographical,forward,0.8,+delta,,active,audit,
+\b(?:was|were) now (?:nearly |almost |about |just |past )?(?:\w+[- ])?(?:years? old|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy)\b(?! (?:miles|minutes|pounds|yards|feet)),regex,biographical,forward,0.8,+delta,,active,audit,
+\bat the end of the (?:term|half|session|half-year)\b|\bwhen (?:the|her|his|their) (?:child|baby|son|daughter|heir) was born\b,regex,biographical,forward,0.8,+delta,,active,audit,
+\bafter a (?:\w+ )?(?:journey|voyage|ride|drive|passage|march|sail)\b|\b(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|a hundred|some|several|many|a few|few)\s+(?:hours?|days?|weeks?|fortnights?|months?|twelvemonths?|years?)['’]?s?['’]? (?:journey|voyage|ride|drive|march|sail|travel)\b,regex,travel,forward,0.8,parsed,,active,audit,
+\b(?:[Aa]rrived|[Aa]rriving|[Ll]anded|[Ll]anding) (?:in|at) (?!Mr|Mrs|Miss|Lady|Sir|Lord|Dr|St\b|last\b)[A-Z][a-z]+|\b[Rr]eached (?!Mr|Mrs|Miss|Lady|Sir|Lord|Dr)[A-Z][a-z]+,regex_cs,travel,forward,0.7,,,active,audit,arrival at a named (capitalized) place
+\b(?:the|by) (?:next|return of) post\b,regex,travel,forward,0.7,,,active,audit,
+(?<!\bbe )(?<!\bbeen )(?<!\bwas )(?<!\bwere )(?<!\bis )(?<!\bare )(?<!\bam )(?<!\bget )(?<!\bgot )(?<!\bgrown )(?<!\bbecome )(?<!\bbecame )(?<!\bnot )(?<!\bquite )(?<!\bwell )(?<!\bso )\bused to\b,regex,frequency,parallel,0.7,multi-unit,multi-unit,active,audit,"habitual 'used to'; 1,770 of Ross's 2,105 hits remain"
+\bevery (?:morning|evening|night|afternoon|day|week|month|year|summer|winter|spring|autumn|sunday|monday|tuesday|wednesday|thursday|friday|saturday|now and then|other day)\b,regex,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,
+\beach (?:morning|evening|night|afternoon|day|week|month|year)\b,regex,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,
+\b(?P<rep>day|night|week|month|year|hour|morning|evening|sunday|time) after (?P=rep)\b,regex,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,"'day after day', 'time after time'"
+\bon (?:sundays|mondays|tuesdays|wednesdays|thursdays|fridays|saturdays|week-days|weekdays)\b,regex,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,
+"\bof an? (?:evening|morning|afternoon|night)(?=\s*[,.;:!?]|\s+(?:and|or|when|after|before|to|in|at|by|with|I|he|she|we|they|you|it)\b)",regex,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,"period idiom 'of an evening' = on evenings, habitually"
+again and again,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,
+many and many a time,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,
+over and over again,phrase,frequency,parallel,0.8,multi-unit,multi-unit,active,audit,
