@@ -93,6 +93,46 @@ def test_tags_removed_from_cleaned_text(tmp_path):
     assert "It was a dark and stormy night" in novel.cleaned_text
 
 
+SAMPLE_WITH_APPARATUS = """<Title: The Sample Governess>
+<Source: Chawton House Collection online>
+<text>
+<THE SAMPLE GOVERNESS. A NOVEL. LONDON: PRINTED FOR J. DOE, 1847.>
+<PREFACE TO THE SECOND EDITION. I thank my critics. July 22nd, 1848.>
+<div title="VOL. I.">
+<chapter title="Chapter I">
+<1>It was a dark and stormy night.<Footnote 1 A common opening.> The governess arrived.
+</chapter>
+<END OF VOL. I.>
+</div>
+</text>
+"""
+
+
+def test_apparatus_and_closing_tags_removed(tmp_path):
+    path = _write(tmp_path, "sample_apparatus.txt", SAMPLE_WITH_APPARATUS)
+    novel = parse_novel(path)
+    text = novel.cleaned_text
+    for gone in ("PREFACE", "July 22nd", "Footnote", "END OF VOL", "</chapter>", "</div>", "<", ">"):
+        assert gone not in text
+    assert text.startswith("It was a dark and stormy night.")
+    assert "The governess arrived." in text
+    # division and page offsets still land on the narrative
+    assert [p.page_number for p in novel.pages] == ["1"]
+    assert text[novel.divisions[1].start_char:].startswith("It was")
+
+
+def test_fiction_bracket_keeps_its_text(tmp_path, monkeypatch):
+    from src import config
+    monkeypatch.setitem(config.FICTION_BRACKETS, "sample_frame.txt", ("INTRODUCTION BY MR. POOTER",))
+    raw = SAMPLE_WITH_APPARATUS.replace(
+        "<PREFACE TO THE SECOND EDITION. I thank my critics. July 22nd, 1848.>",
+        "<INTRODUCTION BY\nMR.  POOTER Why should I not publish my diary?>")
+    novel = parse_novel(_write(tmp_path, "sample_frame.txt", raw))
+    # matched despite the line break inside the bracket; its text is kept
+    assert "POOTER Why should I not publish my diary?" in novel.cleaned_text
+    assert "PRINTED FOR" not in novel.cleaned_text
+
+
 def test_plain_text_fallback_divisions(tmp_path):
     path = _write(tmp_path, "sample_plain.txt", SAMPLE_PLAIN_STYLE)
     novel = parse_novel(path)

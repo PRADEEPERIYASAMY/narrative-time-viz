@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from bisect import bisect_right
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -151,10 +152,15 @@ def _division_number(title: str) -> str:
     return m.group(1) if m else ""
 
 
+_KIND_PRIORITY = {"division_tag": 0, "page_tag": 0, "division_plain": 0, "markup": 1, "bracket": 2}
+
+
 def _walk_tags(text: str):
     """Yield (kind, match) tuples for every division/page tag in document
     order, trying tag-based patterns first and falling back to plain-text
-    markers only where no tags exist at all in the file."""
+    markers only where no tags exist at all in the file. Leftover markup
+    and bracket-wrapped apparatus spans are included too; where one starts
+    at the same place as a division/page tag, the tag wins."""
     tag_spans = []
     for m in config.DIVISION_TAG_PATTERN.finditer(text):
         tag_spans.append(("division_tag", m))
@@ -165,13 +171,20 @@ def _walk_tags(text: str):
         for m in config.DIVISION_PLAIN_PATTERN.finditer(text):
             tag_spans.append(("division_plain", m))
 
-    tag_spans.sort(key=lambda km: km[1].start())
+    for m in config.MARKUP_PATTERN.finditer(text):
+        tag_spans.append(("markup", m))
+    for m in config.BRACKET_SPAN_PATTERN.finditer(text):
+        tag_spans.append(("bracket", m))
+
+    tag_spans.sort(key=lambda km: (km[1].start(), _KIND_PRIORITY[km[0]]))
     return tag_spans
 
 
-def _strip_tags_and_index(text: str) -> tuple[str, list[Division], list[Page]]:
-    """Single pass: build cleaned_text with tags removed, recording each
-    tag's offset *in the cleaned text* as we go."""
+def _strip_tags_and_index(text: str, fiction_brackets: tuple = ()) -> tuple[str, list[Division], list[Page]]:
+    """Single pass: build cleaned_text with tags and apparatus removed,
+    recording each tag's offset *in the cleaned text* as we go. A bracketed
+    span whose text starts with one of fiction_brackets is part of the story:
+    its brackets go, its text stays."""
     tag_spans = _walk_tags(text)
     cleaned_parts = []
     cleaned_len = 0
@@ -214,17 +227,61 @@ def _strip_tags_and_index(text: str) -> tuple[str, list[Division], list[Page]]:
         elif kind == "page_tag":
             pages.append(Page(m.group(1) or "", cleaned_len, page_order))
             page_order += 1
+        elif kind == "bracket":
+            inner = m.group(0)[1:-1]
+            # spaces and line breaks vary inside brackets ("<INTRODUCTION.\nI VISITED")
+            if fiction_brackets and " ".join(inner.split()).startswith(fiction_brackets):
+                cleaned_parts.append(inner)
+                cleaned_len += len(inner)
 
         cursor = end
 
     cleaned_parts.append(text[cursor:])
     cleaned_len += len(text[cursor:])
-    cleaned_text = "".join(cleaned_parts)
+    cleaned_text, remap = _collapse_whitespace("".join(cleaned_parts))
+    for d in divisions:
+        d.start_char = remap(d.start_char)
+    for p in pages:
+        p.char_offset = remap(p.char_offset)
+    return cleaned_text, divisions, pages
 
-    # collapse the excess blank lines left behind by tag removal
-    cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text)
-    cleaned_text = re.sub(r"[ \t]{2,}", " ", cleaned_text)
-    return cleaned_text.strip(), divisions, pages
+
+_EXCESS_WHITESPACE = re.compile(r"\n{3,}|[ \t]{2,}")
+
+
+def _collapse_whitespace(text: str):
+    """Collapse the excess blank lines and spaces left behind by tag
+    removal, and strip the ends. Returns the new text and a function mapping
+    an offset in the old text to the same place in the new one. (Until Weeks
+    9-10 the collapse ran after offsets were recorded, so each division and
+    page offset drifted by the whitespace removed before it.)"""
+    # runs: (old start, old length, chars removed before it, replacement length)
+    parts, runs, cursor, removed = [], [], 0, 0
+    for m in _EXCESS_WHITESPACE.finditer(text):
+        repl = "\n\n" if m.group(0)[0] == "\n" else " "
+        parts += [text[cursor:m.start()], repl]
+        runs.append((m.start(), len(m.group(0)), removed, len(repl)))
+        removed += len(m.group(0)) - len(repl)
+        cursor = m.end()
+    parts.append(text[cursor:])
+    collapsed = "".join(parts)
+    lead = len(collapsed) - len(collapsed.lstrip())
+    stripped = collapsed.strip()
+    starts = [r[0] for r in runs]
+
+    def remap(old: int) -> int:
+        i = bisect_right(starts, old) - 1
+        if i < 0:
+            new = old
+        else:
+            start, old_len, before, repl_len = runs[i]
+            if old < start + old_len:  # inside the collapsed run
+                new = start - before + min(old - start, repl_len)
+            else:
+                new = old - (before + old_len - repl_len)
+        return max(0, min(len(stripped), new - lead))
+
+    return stripped, remap
 
 
 def _load_sentence_tokenizer():
@@ -256,7 +313,7 @@ def parse_novel(path: Path) -> ParsedNovel:
     text = _normalize_encoding(raw_bytes)
     text = _strip_gutenberg_boilerplate(text)
     header_fields, body = _extract_header(text)
-    cleaned_text, divisions, pages = _strip_tags_and_index(body)
+    cleaned_text, divisions, pages = _strip_tags_and_index(body, config.FICTION_BRACKETS.get(path.name, ()))
     sentences = _segment_sentences(cleaned_text)
 
     word_count = len(cleaned_text.split())

@@ -101,6 +101,52 @@ DIVISION_PLAIN_PATTERN = re.compile(
 # number to record.
 PAGE_TAG_PATTERN = re.compile(r'<(?:Page\s+)?(\d+)\s*>', re.IGNORECASE)
 
+# --- apparatus (Weeks 9-10) ------------------------------------------------
+# Closing and stray structural tags (</chapter>, </div>, <div1>, </text>)
+# carry no text; they were left in cleaned_text through Phase 2. Also a
+# footnote whose closing bracket the source forgot (Hajji Baba's note 86),
+# ending where the next bracketed note begins.
+MARKUP_PATTERN = re.compile(r'</?(?:chapter|div\d?|text)\s*>|<Footnote[^<>]*(?=\n\s*\n<)', re.IGNORECASE)
+# Every other bracket-wrapped span is the compilers' apparatus convention:
+# title pages, imprints, dedications, prefaces, contents lists, footnotes,
+# glossaries, illustration captions, transcribers' notes, "END OF VOL.".
+# 659 such spans in the 91 eligible novels were read one by one before
+# this rule was trusted. The only nesting is footnotes inside The
+# Antiquary's introduction and notes, so one level is allowed -- but never a
+# nested page or division tag, so pagination can't be swallowed.
+BRACKET_SPAN_PATTERN = re.compile(
+    r'<(?:[^<>]|<(?!/?(?:chapter|div|text)\b|(?:Page\s+)?\d+\s*>)[^<>]*>)*>', re.IGNORECASE)
+# The few bracketed spans that are part of the fiction itself -- a frame, a
+# fictional editor, a character's voice -- keep their text. Matched by the
+# span's opening words. Notes and glossaries are removed even when written
+# in a persona (Castle Rackrent's "editor", King Solomon's Mines'
+# "Editor"): they explain the text rather than narrate it.
+FICTION_BRACKETS = {
+    # Cherry Wilkinson's address to the reader, in character
+    "1813a.txt": ("THE HEROINE TO THE READER",),
+    # Oldbuck's interjections as he reads a letter aloud, and Dousterswivel's
+    # incantation -- bracketed in this edition, spoken in the story
+    "1816.txt": ("Oh! I am dear sir no longer", "a bet on the sweepstakes",
+                 "come, I see he can write", "his family! curse him",
+                 "pretty mistake, indeed", "so, so, willing to play",
+                 "O ay, he has written himself", "Shedbarschemoth Schartachan"),
+    # the Sibyl's-cave frame: the narrator finds the leaves in 1818
+    "1826.txt": ("INTRODUCTION. I VISITED Naples",),
+    # the fictional editor's interjection between Markham Sutherland's papers
+    "1849a.txt": ("These fragments require no comment",),
+    # the narrator's own preface ("I, his nearest friend")
+    "1872.txt": ("PREFACE. So many false reports",),
+    # the fictional editor's introduction and notes on the manuscript
+    "1881.txt": ("INTRODUCTORY CHAPTER.", "Memoirs of the Life OF MR. JOHN INGLESANT",
+                 "NOTE.—The MSS. are here imperfect"),
+    # Allan Quatermain's preface, signed "A.Q."
+    "1885.txt": ("Now that this book is printed",),
+    # Pooter's introduction to his own diary
+    "1892.txt": ("INTRODUCTION BY MR. POOTER",),
+    # the Proem
+    "1893a.txt": ("From the high Cathedral tower",),
+}
+
 # --- residual boilerplate (defensive; corpus is pre-cleaned but some
 # source texts were pulled from Project Gutenberg) -----------------------
 GUTENBERG_START = re.compile(r"\*\*\*\s*START OF (THE|THIS) PROJECT GUTENBERG.*?\*\*\*", re.IGNORECASE | re.DOTALL)
