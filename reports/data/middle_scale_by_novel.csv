@@ -1,0 +1,92 @@
+filename,title,author,year,gender,source,median_block_words,paragraph_novel,strict_paragraph_novel,flashbacks,flashback_visible_paragraph,flashback_visible_passage
+1800.txt,Castle Rackrent,Maria Edgeworth,1800,F,Project Gutenberg,37.0,True,True,31,0.5806,0.5484
+1802.txt,"Stella of the North, or the Foundling of the Ship",Helen Craik,1802,F,Chawton House Collection online,1877,False,False,518,,0.4402
+1803.txt,Thaddeus of Warsaw,Jane Porter,1803,F,Project Gutenberg,45.0,True,True,310,0.7194,0.5871
+1804.txt,"Adeline Mowbray or, The Mother and Daughter",Amelia Alderson Opie,1804,F,Project Gutenberg,38,True,True,210,0.6952,0.5524
+1805.txt,"Fleetwood: Or, The New Man Of Feeling",William Godwin,1805,M,public-library-UK,77.0,True,True,437,0.5789,0.5149
+1807.txt,"Drelincourt and Rodalvi; or, Memoirs of Two Nobel Families",Elizabeth (Byron) Strutt,1807,F,Chawton House Collection online,605,True,False,347,0.3314,0.3919
+1808.txt,The Adventures of Ulysses,Charles Lamb,1808,M,Project Gutenberg,3224.5,False,False,102,,0.3235
+1809.txt,THE CORINNA OF ENGLAND.,Anna Maria Mackenzie,1809,F,Chawton House Collection online,610.0,True,False,141,0.234,0.6241
+1810.txt,Romance Readers and Romance Writers: a Satirical Novel,Sarah Green,1810,F,Chawton House Collection online,615.5,True,False,226,0.3673,0.5
+1811.txt,Self-control,Mary Brunton,1811,F,Project Gutenberg,118,True,True,457,0.6061,0.5624
+1811a.txt,The Missionary; vol. I. An Indian Tale,Lady Sidney Morgan,1811,F,Project Gutenberg,153.0,True,True,49,0.6735,0.551
+1812.txt,"The Loyalists, Vol. 1-3, An Historical Novel",Jane West,1812,F,Project Gutenberg,104,True,True,302,0.6126,0.5695
+1813.txt,PRIDE AND PREJUDICE: A NOVEL. IN THREE VOLUMES.,Jane Austen,1813,F,Project Gutenberg,1721,False,False,292,,0.6644
+1813a.txt,The Heroine,Eaton Stannard Barrett,1813,M,Project Gutenberg,22.0,True,True,51,0.902,0.9412
+1816.txt,"The Antiquary, Complete",Sir Walter Scott,1816,M,Project Gutenberg,39.0,True,True,275,0.6909,0.5455
+1817.txt,Villasantelle; or the Curious Impediment,Catherine Selden,1817,F,Chawton House,601,True,False,171,0.3977,0.5029
+1818.txt,Marriage,Susan Edmonstone Ferrier,1818,F,Project Gutenberg,38,True,True,200,0.715,0.69
+1819.txt,Any Thing But What You Expect,Jane Harvey,1819,F,Chawton House,165.0,True,True,311,0.2186,0.254
+1819a.txt,The Vampyre; A Tale,John William Polidori,1819,M,Project Gutenberg,305.5,True,False,46,0.0217,0
+1822.txt,The Provost,John Galt,1822,M,Project Gutenberg,132,True,True,136,0.3971,0.4044
+1823.txt,Isabella. A Novel,Frances Jacson,1823,F,Project Gutenberg,2433.5,False,False,401,,0.6509
+1824.txt,Theresa Marchmont,Mrs Charles Gore,1824,F,Project Gutenberg,103.0,True,True,70,0.5571,0.5571
+1824a.txt,The Adventures of Hajji Baba of Ispahan,James Morier,1824,M,Project Gutenberg,66,True,True,475,0.4737,0.4463
+1825.txt,"Richelieu, v. 1/3 A Tale of France",G. P. R. James,1825,M,Project Gutenberg,63,True,True,101,0.5842,0.5842
+1826.txt,The Last Man,Mary W. Shelley,1826,F,Project Gutenberg,5603,False,False,429,,0.5431
+1827.txt,The Mummy!,Jane C. Loudon,1827,F,Project Gutenberg,2385.5,False,False,351,,0.4872
+1827a.txt,The Epicurean,Thomas Moore,1827,M,Project Gutenberg,96.0,True,True,188,0.5691,0.484
+1830.txt,"Paul Clifford, Complete",Edward Bulwer-Lytton,1830,M,Project Gutenberg,39,True,True,291,0.7251,0.6117
+1831.txt,Crotchet Castle,Thomas Love Peacock,1831,M,Project Gutenberg,28,True,True,39,0.9487,0.8718
+1833.txt,Tom Cringle’s Log,Michael Scott,1833,M,Project Gutenberg,37.0,True,True,422,0.4431,0.4502
+1835.txt,Shanty the Blacksmith; A Tale of Other Times,Mrs. Sherwood <AKA: Mrs. Mary Martha Sherwood>,1835,F,Project Gutenberg,53,True,True,135,0.4741,0.4963
+1836.txt,Mr. Midshipman Easy,Captain Frederick Marryat,1836,M,Project Gutenberg,24.0,True,True,346,0.7341,0.6069
+1836a.txt,Sartor Resartus: The Life and Opinions of Herr Teufelsdrockh,Thomas Carlyle,1836,M,Project Gutenberg,141,True,True,15,0.8667,0.9333
+1837.txt,OLIVER TWIST OR THE PARISH BOY'S PROGRESS,CHARLES DICKENS,1837,M,Project Gutenberg,2978.5,False,False,262,,0.7214
+1838.txt,Deerbrook,Harriet Martineau,1838,F,Project Gutenberg,33,True,True,567,0.8854,0.7601
+1840.txt,Tippoo Sultaun: A tale of the Mysore war,Meadows Taylor,1840,M,Project Gutenberg,46.0,True,True,630,0.5857,0.4952
+1842.txt,Windsor Castle,William Harrison Ainsworth,1842,M,Project Gutenberg,29.0,True,True,117,0.8632,0.7692
+1844.txt,Barry Lyndon,William Makepeace Thackeray,1844,M,Project Gutenberg,84.0,True,True,228,0.5088,0.5175
+1845.txt,Sybil or the Two Nations,Benjamin Disraeli,1845,M,Project Gutenberg,26,True,True,333,0.7658,0.6066
+1846.txt,"Wagner, the Wehr-Wolf",George W. M. Reynolds,1846,M,Project Gutenberg,42,True,True,476,0.6576,0.5231
+1847.txt,Wuthering Heights,Emily Bronte,1847,F,Project Gutenberg,3232.5,False,False,114,,0.8772
+1848.txt,The Tenant of Wildfell Hall,Anne Bronte,1848,F,Project Gutenberg,2979,False,False,178,,0.6685
+1849.txt,Shirley,Charlotte Brontë,1849,F,Project Gutenberg,21,True,True,241,0.834,0.8423
+1849a.txt,The Nemesis of Faith.,J. A. Froude,1849,M,"Nineteenth-Century Fiction, http://collections.chadwyck.co.uk",277.0,True,False,144,0.6111,0.6389
+1855.txt,Westward Ho!,Charles Kingsley,1855,M,Project Gutenberg,27.0,True,True,403,0.6725,0.5881
+1855a.txt,Rachel Gray,Julia Kavanagh,1855,F,Project Gutenberg,27,True,True,72,0.8056,0.6667
+1856.txt,It Is Never Too Late to Mend,Charles Reade,1856,M,Project Gutenberg,19,True,True,292,0.7979,0.7295
+1857.txt,"John Halifax, Gentleman",Dinah Maria Mulock Craik,1857,F,Project Gutenberg,23,True,True,282,0.8794,0.6986
+1858.txt,Ask Mamma or The Richest Commoner In England,R. S. Surtees,1858,M,Project Gutenberg,39,True,True,236,0.6441,0.6483
+1860.txt,Semi-Attached Couple,Emily Eden,1869,F,A Celebration of Women Writers,1568.5,False,False,132,,0.6894
+1861.txt,East Lynne,Mrs Henry Wood,1861,F,Project Gutenberg,4416,False,False,367,,0.6294
+1861a.txt,Tom Brown at Oxford,Thomas Hughes,1861,M,Project Gutenberg,25,True,True,441,0.8277,0.7506
+1862.txt,Lady Audley's Secret,Mary Elizabeth Braddon,1862,F,Project Gutenberg,30,True,True,332,0.756,0.7048
+1863.txt,The House by the Church-Yard,Joseph Sheridan Le Fanu,1863,M,Project Gutenberg,33,True,True,120,0.85,0.8167
+1864.txt,Wives and Daughters: An Every-day Story,Elizabeth Cleghorn Gaskell,1864,F,Project Gutenberg,3739.5,False,False,622,,0.6817
+1865.txt,Alice's Adventures in Wonderland,Lewis Carroll,1865,M,Project Gutenberg,22.0,True,True,34,0.8529,0.5882
+1866.txt,Miss Marjoribanks,Margeret Oliphant,1866,F,Project Gutenberg,98,True,True,689,0.6386,0.5501
+1867.txt,Under Two Flags,Ouida [Louise de la Ramee],1867,F,Project Gutenberg,39,True,True,688,0.5654,0.5363
+1868.txt,The Moonstone,Wilkie Collins,1868,M,Project Gutenberg,2915.0,False,False,516,,0.7248
+1869.txt,Lorna Doone,Richard Doddrige Blackmore,1869,M,Project Gutenberg,3200,False,False,497,,0.6398
+1870.txt,Red as a Rose is She,Rhoda Broughton,1870,F,Project Gutenberg,27.0,True,True,1,0,1
+1871.txt,Joshua Marvel,Benjamin Leopold Farjeon,1871,M,Project Gutenberg,23.0,True,True,349,0.7937,0.765
+1872.txt,The True Story of Joshua Davidson,Elizabeth Lynn Linton,1872,F,"Nineteenth-Century Fiction, http://collections.chadwyck.co.uk",142,True,True,70,0.6714,0.6857
+1873.txt,Old Kensington,Anne Thackeray Ritchie,1873,F,Project Gutenberg,37.0,True,True,420,0.7214,0.5929
+1873a.txt,In the Days of My Youth,Amelia Ann Blandford Edwards,1873,F,Project Gutenberg,19.0,True,True,120,0.9333,0.8083
+1874.txt,Mortomley's Estate,Charlotte Elizabeth Riddell,1874,F,Project Gutenberg,30.0,True,True,381,0.7402,0.6404
+1875.txt,The Way We Live Now,Anthony Trollope,1875,M,Project Gutenberg,1661.0,False,False,1794,,0.6884
+1876.txt,Daniel Deronda,George Eliot,1876,F,Project Gutenberg,3801,False,False,915,,0.6044
+1877.txt,Black Beauty,Anna Sewell,1877,F,Project Gutenberg,43.0,True,True,92,0.7391,0.6522
+1879.txt,The Egoist: A Comedy in Narrative,George Meredith,1879,M,Project Gutenberg,13,True,True,217,0.8618,0.8618
+1881.txt,John Inglesant: A Romance,John Henry Shorthouse,1881,M,Project Gutenberg,63,True,True,464,0.6164,0.5108
+1882.txt,Vice Versa or A Lesson to Fathers,Thomas Anstey Guthrie,1882,M,Project Gutenberg,37.0,True,True,93,0.9462,0.7742
+1883.txt,The Story of an African Farm,Olive Schreiner,1883,F,Project Gutenberg,3167,False,False,115,,0.7913
+1883a.txt,Treasure Island,Robert Louis Stevenson,1883,M,Project Gutenberg,951.5,False,False,183,,0.5847
+1884.txt,We Two,Edna Lyall,1884,F,Project Gutenberg,4019,False,False,542,,0.5018
+1885.txt,King Solomon's Mines,Henry Rider Haggard,1885,M,Project Gutenberg,739.0,True,False,130,0,0.6615
+1886.txt,A Phantom Lover,Violet Lee Paget,1886,F,Project Gutenberg,1882,False,False,40,,0.675
+1886a.txt,Little Lord Fauntleroy,Frances Hodgson Burnett,1886,F,Project Gutenberg,25.5,True,True,214,0.6869,0.5841
+1888.txt,Robert Elsmere,Mary Augusta Ward (Mrs. Humphry Ward,1888,F,Project Gutenberg,5535,False,False,794,,0.5819
+1889.txt,Three Men in a Boat,Jerome K. Jerome,1889,M,Project Gutenberg EBook,3439.5,False,False,106,,0.5094
+1890.txt,The Sign of the Four,Sir Arthur Conan Doyle,1890,M,Project Gutenberg,3108,False,False,59,,0.7458
+1891.txt,New Grub Street,George Gissing,1891,M,Project Gutenberg,4729,False,False,323,,0.7833
+1892.txt,The Dairy of a Nobody,George Grossmith and Walter Weedon Grossmith,1892,M,Project Gutenberg,1684.0,False,False,47,,0.8511
+1893.txt,Miss Stuart's Legacy,Flora Annie Steel,1893,F,Project Gutenberg,41.0,True,True,240,0.8333,0.6833
+1893a.txt,The Heavenly Twins,Frances Elizabeth Bellenden Clarke (Pen name: Sarah Grand),1893,F,Project Gutenberg,28,True,True,676,0.6731,0.6154
+1894.txt,The Daughters of Danaus,Mona Caird,1894,F,Project Gutenberg,24.0,True,True,418,0.8254,0.7703
+1894a.txt,The Prisoner of Zenda,Anthony Hope,1894,M,Project Gutenberg,2448.5,False,False,103,,0.9029
+1895.txt,Jude the Obscure,Thomas Hardy,1895,M,Project Gutenberg,26.0,True,True,390,0.8308,0.7077
+1896.txt,The Island of Doctor Moreau,Herbert George Wells,1896,M,Project Gutenberg,1634,False,False,76,,0.6711
+1897.txt,Dracula,"Abraham ""Bram"" Stoker",1897,M,Project Gutenberg,409.0,True,False,174,0.1897,0.7644
+1899.txt,Red Pottage,Mary Cholmondeley,1899,F,Project Gutenberg,25,True,True,427,0.7799,0.6768

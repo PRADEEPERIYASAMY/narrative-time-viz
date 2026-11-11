@@ -1,0 +1,458 @@
+{
+  "groups": {
+    "all": 91,
+    "para": 64,
+    "strict": 56,
+    "excluded": 27
+  },
+  "the_8_long_block_novels": [
+    "1807.txt",
+    "1809.txt",
+    "1810.txt",
+    "1817.txt",
+    "1819a.txt",
+    "1849a.txt",
+    "1885.txt",
+    "1897.txt"
+  ],
+  "unit_sizes": {
+    "paragraph": {
+      "units": 125654,
+      "median_words": 37.0,
+      "p10": 8.0,
+      "p90": 148.0,
+      "share_under_25_words": 0.3606,
+      "median_within_novel_cv": 0.985
+    },
+    "passage": {
+      "units": 37035,
+      "median_words": 199,
+      "p10": 100.0,
+      "p90": 380.0,
+      "share_under_25_words": 0.0006,
+      "median_within_novel_cv": 0.37
+    }
+  },
+  "visibility": {
+    "present": {
+      "retrospection": {
+        "events": 26395,
+        "word": 0.8688,
+        "passage": 0.6162,
+        "scene": 0.2664,
+        "lost_from_word": 0.3612
+      },
+      "prospection": {
+        "events": 4612,
+        "word": 0.9905,
+        "passage": 0.7799,
+        "scene": 0.33,
+        "lost_from_word": 0.2176
+      },
+      "marker_density": {
+        "events": 40051,
+        "word": 1.0,
+        "passage": 0.4377,
+        "scene": 0.1867,
+        "lost_from_word": 0.5623
+      },
+      "tense_churn": {
+        "events": 266993,
+        "word": 0.4881,
+        "passage": 0.1899,
+        "scene": 0.1721,
+        "lost_from_word": 0.7292
+      }
+    },
+    "present_64": {
+      "retrospection": {
+        "events": 16517,
+        "word": 0.8689,
+        "passage": 0.6065,
+        "scene": 0.2568,
+        "lost_from_word": 0.3696
+      },
+      "prospection": {
+        "events": 2754,
+        "word": 0.9956,
+        "passage": 0.7901,
+        "scene": 0.3152,
+        "lost_from_word": 0.2097
+      },
+      "marker_density": {
+        "events": 25869,
+        "word": 1.0,
+        "passage": 0.434,
+        "scene": 0.1783,
+        "lost_from_word": 0.566
+      },
+      "tense_churn": {
+        "events": 170681,
+        "word": 0.5116,
+        "passage": 0.1885,
+        "scene": 0.1754,
+        "lost_from_word": 0.7379
+      }
+    },
+    "alternative": {
+      "retrospection": {
+        "events": 16517,
+        "word": 0.8689,
+        "paragraph": 0.6603,
+        "scene": 0.2568,
+        "lost_from_word": 0.3158
+      },
+      "prospection": {
+        "events": 2754,
+        "word": 0.9956,
+        "paragraph": 0.7509,
+        "scene": 0.3152,
+        "lost_from_word": 0.2487
+      },
+      "marker_density": {
+        "events": 25869,
+        "word": 1.0,
+        "paragraph": 0.4271,
+        "scene": 0.1783,
+        "lost_from_word": 0.5729
+      },
+      "tense_churn": {
+        "events": 170681,
+        "word": 0.5116,
+        "paragraph": 0.1281,
+        "scene": 0.1754,
+        "lost_from_word": 0.8099
+      }
+    },
+    "strict_56": {
+      "retrospection": {
+        "events": 15355,
+        "word": 0.8676,
+        "paragraph": 0.6874,
+        "scene": 0.2538,
+        "lost_from_word": 0.287
+      },
+      "prospection": {
+        "events": 2578,
+        "word": 0.9957,
+        "paragraph": 0.7758,
+        "scene": 0.3157,
+        "lost_from_word": 0.224
+      },
+      "marker_density": {
+        "events": 23825,
+        "word": 1.0,
+        "paragraph": 0.4554,
+        "scene": 0.1684,
+        "lost_from_word": 0.5446
+      },
+      "tense_churn": {
+        "events": 160062,
+        "word": 0.5108,
+        "paragraph": 0.1301,
+        "scene": 0.1789,
+        "lost_from_word": 0.8059
+      }
+    }
+  },
+  "agreement": {
+    "retrospection": {
+      "events": 16983,
+      "both_visible": 8164,
+      "paragraph_only": 2938,
+      "passage_only": 2068,
+      "neither": 3813,
+      "agreement": 0.7052,
+      "cohen_kappa": 0.371,
+      "paragraph_visible": 0.6537,
+      "passage_visible": 0.6025,
+      "mcnemar_p": 1.1295767507568344e-34
+    },
+    "prospection": {
+      "events": 2781,
+      "both_visible": 1796,
+      "paragraph_only": 290,
+      "passage_only": 401,
+      "neither": 294,
+      "agreement": 0.7515,
+      "cohen_kappa": 0.3,
+      "paragraph_visible": 0.7501,
+      "passage_visible": 0.79,
+      "mcnemar_p": 2.856721774866626e-05
+    },
+    "marker_density": {
+      "events": 26315,
+      "both_visible": 6644,
+      "paragraph_only": 4568,
+      "passage_only": 4733,
+      "neither": 10370,
+      "agreement": 0.6466,
+      "cohen_kappa": 0.279,
+      "paragraph_visible": 0.4261,
+      "passage_visible": 0.4323,
+      "mcnemar_p": 0.08903515795703605
+    },
+    "tense_churn": {
+      "events": 172546,
+      "both_visible": 9779,
+      "paragraph_only": 12345,
+      "passage_only": 22665,
+      "neither": 127757,
+      "agreement": 0.7971,
+      "cohen_kappa": 0.243,
+      "paragraph_visible": 0.1282,
+      "passage_visible": 0.188,
+      "mcnemar_p": 0.0
+    },
+    "retrospection_high_confidence": {
+      "events": 1095,
+      "both_visible": 374,
+      "paragraph_only": 224,
+      "passage_only": 110,
+      "neither": 387,
+      "agreement": 0.695,
+      "cohen_kappa": 0.396,
+      "paragraph_visible": 0.5461,
+      "passage_visible": 0.442,
+      "mcnemar_p": 6.286088276846307e-10
+    },
+    "retrospection_strict_56": {
+      "events": 15604,
+      "both_visible": 7836,
+      "paragraph_only": 2845,
+      "passage_only": 1662,
+      "neither": 3261,
+      "agreement": 0.7112,
+      "cohen_kappa": 0.372,
+      "paragraph_visible": 0.6845,
+      "passage_visible": 0.6087,
+      "mcnemar_p": 2.195068490567381e-69
+    }
+  },
+  "per_novel_spearman": {
+    "rho": 0.712,
+    "p": 4.162212102459059e-11,
+    "novels": 64
+  },
+  "difference_vs_median_paragraph_length": {
+    "rho": -0.465,
+    "p": 0.00010974883133412534
+  },
+  "who_is_excluded": {
+    "included_64": {
+      "novels": 64,
+      "median_year": 1845.5,
+      "women": 32,
+      "project_gutenberg": 56,
+      "by_half_century": {
+        "1800-1849": 35,
+        "1850-1899": 29
+      }
+    },
+    "excluded_27": {
+      "novels": 27,
+      "median_year": 1869,
+      "women": 15,
+      "project_gutenberg": 25,
+      "by_half_century": {
+        "1800-1849": 9,
+        "1850-1899": 18
+      }
+    },
+    "year_difference_mannwhitney_p": 0.02082
+  },
+  "findings": {
+    "present_91": {
+      "novels": 91,
+      "trends": {
+        "abruptness_per_10k": {
+          "spearman_rho": 0.443,
+          "partial_rho_controlling_sentence_length": 0.388,
+          "partial_p": 0.00015
+        },
+        "retrospective_original_per_10k": {
+          "spearman_rho": 0.505,
+          "partial_rho_controlling_sentence_length": 0.436,
+          "partial_p": 2e-05
+        },
+        "retrospective_ross_per_10k": {
+          "spearman_rho": -0.498,
+          "partial_rho_controlling_sentence_length": -0.335,
+          "partial_p": 0.00117
+        },
+        "sequence_per_10k": {
+          "spearman_rho": 0.536,
+          "partial_rho_controlling_sentence_length": 0.388,
+          "partial_p": 0.00014
+        },
+        "recollection_per_10k": {
+          "spearman_rho": -0.263,
+          "partial_rho_controlling_sentence_length": -0.317,
+          "partial_p": 0.0022
+        },
+        "clock_time_per_10k": {
+          "spearman_rho": 0.505,
+          "partial_rho_controlling_sentence_length": 0.266,
+          "partial_p": 0.0107
+        },
+        "retrospection_per_verb": {
+          "spearman_rho": -0.201,
+          "partial_rho_controlling_sentence_length": 0.023,
+          "partial_p": 0.83045
+        },
+        "flashbacks_hi_per_10k_words": {
+          "spearman_rho": -0.088,
+          "partial_rho_controlling_sentence_length": 0.044,
+          "partial_p": 0.67541
+        },
+        "mean_sentence_words": {
+          "spearman_rho": -0.65
+        }
+      },
+      "gender": {
+        "frequency_per_10k": {
+          "female_median": 4.633,
+          "male_median": 3.453,
+          "p": 0.00132
+        },
+        "seasonal_per_10k": {
+          "female_median": 1.039,
+          "male_median": 0.5865,
+          "p": 0.00087
+        }
+      }
+    },
+    "subset_64": {
+      "novels": 64,
+      "trends": {
+        "abruptness_per_10k": {
+          "spearman_rho": 0.429,
+          "partial_rho_controlling_sentence_length": 0.346,
+          "partial_p": 0.00516
+        },
+        "retrospective_original_per_10k": {
+          "spearman_rho": 0.559,
+          "partial_rho_controlling_sentence_length": 0.461,
+          "partial_p": 0.00013
+        },
+        "retrospective_ross_per_10k": {
+          "spearman_rho": -0.443,
+          "partial_rho_controlling_sentence_length": -0.231,
+          "partial_p": 0.06645
+        },
+        "sequence_per_10k": {
+          "spearman_rho": 0.511,
+          "partial_rho_controlling_sentence_length": 0.39,
+          "partial_p": 0.00143
+        },
+        "recollection_per_10k": {
+          "spearman_rho": -0.29,
+          "partial_rho_controlling_sentence_length": -0.339,
+          "partial_p": 0.00608
+        },
+        "clock_time_per_10k": {
+          "spearman_rho": 0.419,
+          "partial_rho_controlling_sentence_length": 0.245,
+          "partial_p": 0.05111
+        },
+        "retrospection_per_verb": {
+          "spearman_rho": -0.188,
+          "partial_rho_controlling_sentence_length": 0.016,
+          "partial_p": 0.89972
+        },
+        "flashbacks_hi_per_10k_words": {
+          "spearman_rho": -0.113,
+          "partial_rho_controlling_sentence_length": 0.031,
+          "partial_p": 0.80892
+        },
+        "mean_sentence_words": {
+          "spearman_rho": -0.604
+        }
+      },
+      "gender": {
+        "frequency_per_10k": {
+          "female_median": 4.6,
+          "male_median": 3.453,
+          "p": 0.01374
+        },
+        "seasonal_per_10k": {
+          "female_median": 1.0265,
+          "male_median": 0.605,
+          "p": 0.00798
+        }
+      }
+    }
+  },
+  "paragraph_initial": {
+    "paragraph_initial_share_of_all_sentences": 0.3599,
+    "flashback": {
+      "events": 15604,
+      "paragraph_initial": 4620,
+      "share": 0.2961,
+      "ratio_to_baseline": 0.82,
+      "binomial_p": 1.0903959784873606e-63
+    },
+    "flashback_hi": {
+      "events": 1001,
+      "paragraph_initial": 324,
+      "share": 0.3237,
+      "ratio_to_baseline": 0.9,
+      "binomial_p": 0.017709220435427178
+    },
+    "flashforward": {
+      "events": 2592,
+      "paragraph_initial": 673,
+      "share": 0.2596,
+      "ratio_to_baseline": 0.72,
+      "binomial_p": 1.3144259549176134e-27
+    },
+    "flashforward_hi": {
+      "events": 130,
+      "paragraph_initial": 51,
+      "share": 0.3923,
+      "ratio_to_baseline": 1.09,
+      "binomial_p": 0.46506664920117713
+    },
+    "length_matched": {
+      "by_paragraph_sentences": {
+        "2": {
+          "chance": 0.5,
+          "flashbacks": 2125,
+          "flashback_share": 0.48
+        },
+        "3": {
+          "chance": 0.3333,
+          "flashbacks": 2106,
+          "flashback_share": 0.3072
+        },
+        "4": {
+          "chance": 0.25,
+          "flashbacks": 1909,
+          "flashback_share": 0.23
+        },
+        "5": {
+          "chance": 0.2,
+          "flashbacks": 1394,
+          "flashback_share": 0.1844
+        },
+        "6+": {
+          "chance": 0.1111,
+          "flashbacks": 6437,
+          "flashback_share": 0.0969
+        }
+      },
+      "flashback": {
+        "observed": 2987,
+        "expected": 3235.5,
+        "ratio": 0.923,
+        "z": -5.28
+      },
+      "flashback_hi": {
+        "observed": 192,
+        "expected": 215.5,
+        "ratio": 0.891,
+        "z": -1.96
+      }
+    }
+  }
+}
