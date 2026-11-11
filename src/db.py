@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS temporal_events (
 CREATE TABLE IF NOT EXISTS granularity_units (
     id                   INTEGER PRIMARY KEY AUTOINCREMENT,
     novel_id             INTEGER NOT NULL REFERENCES novels(id) ON DELETE CASCADE,
-    level                TEXT CHECK(level IN ('word','passage','scene','page')),
+    level                TEXT CHECK(level IN ('word','paragraph','passage','scene','page')),
     unit_index           INTEGER,
     start_word           INTEGER,
     end_word             INTEGER,
@@ -138,7 +138,9 @@ CREATE TABLE IF NOT EXISTS granularity_comparison (
     word_z              REAL,
     passage_z           REAL,
     scene_z             REAL,
-    page_z              REAL
+    page_z              REAL,
+    visible_at_paragraph INTEGER,  -- Weeks 9-10: the author's paragraphs, where they survive
+    paragraph_z         REAL
 );
 
 CREATE INDEX IF NOT EXISTS idx_sentences_novel ON sentences(novel_id);
@@ -148,6 +150,10 @@ CREATE INDEX IF NOT EXISTS idx_temporal_events_novel ON temporal_events(novel_id
 CREATE INDEX IF NOT EXISTS idx_sentence_features_tense ON sentence_features(dominant_tense);
 CREATE INDEX IF NOT EXISTS idx_granularity_units_novel ON granularity_units(novel_id, level);
 CREATE INDEX IF NOT EXISTS idx_granularity_comparison_novel ON granularity_comparison(novel_id);
+-- deleting a novel's events checks the event_id foreign key row by row;
+-- without this index a re-run of an analyzed novel scans the whole table
+-- once per event (Weeks 9-10)
+CREATE INDEX IF NOT EXISTS idx_granularity_comparison_event ON granularity_comparison(event_id);
 """
 
 # columns added after the original schema shipped -- CREATE TABLE IF NOT
@@ -165,6 +171,10 @@ _NOVELS_MIGRATIONS = [
 _EVENTS_MIGRATIONS = [
     ("duration_modifier", "TEXT"),  # Weeks 9-10
 ]
+_COMPARISON_MIGRATIONS = [  # Weeks 9-10
+    ("visible_at_paragraph", "INTEGER"),
+    ("paragraph_z", "REAL"),
+]
 
 
 def _migrate_columns(conn: sqlite3.Connection, table: str, migrations) -> None:
@@ -177,6 +187,25 @@ def _migrate_columns(conn: sqlite3.Connection, table: str, migrations) -> None:
 def _migrate_novels_columns(conn: sqlite3.Connection) -> None:
     _migrate_columns(conn, "novels", _NOVELS_MIGRATIONS)
     _migrate_columns(conn, "temporal_events", _EVENTS_MIGRATIONS)
+    _migrate_columns(conn, "granularity_comparison", _COMPARISON_MIGRATIONS)
+
+
+def _migrate_granularity_units_levels(conn: sqlite3.Connection) -> None:
+    """Weeks 9-10 adds the 'paragraph' level. SQLite can't alter a CHECK
+    constraint, so a database built before then gets its granularity_units
+    table rebuilt under the new schema, rows copied across."""
+    sql = conn.execute(
+        "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'granularity_units'").fetchone()
+    if not sql or "'paragraph'" in sql[0]:
+        return
+    conn.execute("ALTER TABLE granularity_units RENAME TO granularity_units_old")
+    conn.executescript(SCHEMA)
+    cols = [r[1] for r in conn.execute("PRAGMA table_info(granularity_units_old)")]
+    conn.execute(f"INSERT INTO granularity_units ({', '.join(cols)}) "
+                 f"SELECT {', '.join(cols)} FROM granularity_units_old")
+    conn.execute("DROP TABLE granularity_units_old")
+    conn.executescript(SCHEMA)  # the index went with the old table; recreate it
+    conn.commit()
 
 
 def _migrate_granularity_comparison(conn: sqlite3.Connection) -> None:
@@ -200,6 +229,7 @@ def get_connection(db_path: Path = config.DB_PATH) -> sqlite3.Connection:
     conn.executescript(SCHEMA)
     _migrate_novels_columns(conn)
     _migrate_granularity_comparison(conn)
+    _migrate_granularity_units_levels(conn)
     return conn
 
 
