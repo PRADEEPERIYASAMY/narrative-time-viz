@@ -251,6 +251,7 @@ def process_novel(conn, novel_id: int, filename: str, cleaned_text: str) -> Coun
     )
     levels = {
         "word": granularity.word_units(total_words),
+        "paragraph": None,
         "passage": granularity.passage_units(word_starts, total_words),
         "scene": granularity.span_units(scene_spans),
         "page": None,
@@ -260,6 +261,11 @@ def process_novel(conn, novel_id: int, filename: str, cleaned_text: str) -> Coun
         levels["page"] = granularity.span_units(
             [(word_of_char(bounds[k]), word_of_char(bounds[k + 1]), page_ids[k])
              for k in range(len(page_ids))])
+    # the author's paragraphs, where the source kept them (Weeks 9-10)
+    if granularity.has_paragraphs(cleaned_text):
+        starts = sorted({word_of_char(off) for off, _ in granularity.paragraph_blocks(cleaned_text)})
+        levels["paragraph"] = granularity.span_units(
+            [(a, b, None) for a, b in zip(starts, starts[1:] + [total_words])])
 
     indexes = {}
     for level, units in levels.items():
@@ -287,9 +293,9 @@ def process_novel(conn, novel_id: int, filename: str, cleaned_text: str) -> Coun
     conn.executemany(
         """INSERT INTO granularity_comparison
            (novel_id, event_id, event_signature, signal, word_position, visible_at_sentence,
-            visible_at_word, visible_at_passage, visible_at_scene, visible_at_page,
-            word_z, passage_z, scene_z, page_z)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", rows)
+            visible_at_word, visible_at_paragraph, visible_at_passage, visible_at_scene,
+            visible_at_page, word_z, paragraph_z, passage_z, scene_z, page_z)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", rows)
 
     conn.commit()
     return counts

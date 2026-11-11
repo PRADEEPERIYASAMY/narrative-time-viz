@@ -363,3 +363,25 @@ def test_scene_boundaries_are_structural():
     word = granularity.index_units(granularity.measure(granularity.word_units(1000), obs))
     cmp = granularity.compare("scene_boundary", 300, {"word": word})
     assert cmp["signal"] == "structural" and cmp["visible_at_word"] == 1
+
+
+# --- the paragraph level (Weeks 9-10) ----------------------------------------
+
+def test_paragraph_blocks_locate_each_paragraph():
+    text = "First para here.\n\nSecond one,\nstill second.\n\n\n  Third."
+    blocks = granularity.paragraph_blocks(text)
+    assert [(text[off:off + 6], words) for off, words in blocks] == [
+        ("First ", 3), ("Second", 4), ("Third.", 1)]
+
+
+def test_flattened_source_has_no_paragraphs():
+    # a chapter-sized "paragraph" (Wuthering Heights' source) is not one
+    assert not granularity.has_paragraphs(("word " * 3000 + "\n\n") * 3)
+    assert granularity.has_paragraphs(("word " * 40 + "\n\n") * 30)
+
+
+def test_paragraph_level_is_null_where_paragraphs_are_lost():
+    obs = _novel_with_one_retrospective_burst()
+    word = granularity.index_units(granularity.measure(granularity.word_units(1000), obs))
+    cmp = granularity.compare("flashback", 510, {"word": word, "paragraph": None})
+    assert cmp["visible_at_word"] == 1 and cmp["visible_at_paragraph"] is None

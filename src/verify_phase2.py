@@ -18,7 +18,8 @@ role for Phase 1):
       is tagged
   granularity comparison
     - every analyzed novel has signal units at word, passage, and scene
-      level, and at page level if it has reliable pagination
+      level, at page level if it has reliable pagination, and at paragraph
+      level exactly when its paragraphs survive (Weeks 9-10)
     - every event has exactly one granularity_comparison row
     - visibility values are 0, 1, or NULL (not measurable), never anything else
   scope
@@ -36,12 +37,13 @@ import sys
 
 from . import config
 from .analyze_temporal import TEST_SLICE
-from .temporal.granularity import RELIABLE_PAGE_NOVELS
+from .temporal.granularity import RELIABLE_PAGE_NOVELS, has_paragraphs
 from .temporal.scene_duration import DURATION_LABELS
 
 REQUIRED = ["tense_shift", "explicit_marker", "scene_boundary"]
 FLASHBACK_TYPES = ["flashback", "flashforward"]
-VIS_COLS = ["visible_at_word", "visible_at_passage", "visible_at_scene", "visible_at_page"]
+VIS_COLS = ["visible_at_word", "visible_at_paragraph", "visible_at_passage", "visible_at_scene",
+            "visible_at_page"]
 
 
 def main():
@@ -131,13 +133,18 @@ def main():
 
     # --- granularity comparison ----------------------------------------------
     analyzed = conn.execute(
-        """SELECT DISTINCT n.id, n.filename FROM temporal_events te
-           JOIN novels n ON n.id = te.novel_id""").fetchall()
-    missing_levels = []
-    for nid, fn in analyzed:
+        """SELECT n.id, n.filename, n.cleaned_text FROM novels n
+           WHERE n.id IN (SELECT DISTINCT novel_id FROM temporal_events)""").fetchall()
+    missing_levels, with_paragraphs = [], 0
+    for nid, fn, text in analyzed:
         levels = {r[0] for r in conn.execute(
             "SELECT DISTINCT level FROM granularity_units WHERE novel_id = ?", (nid,))}
         need = {"word", "passage", "scene"} | ({"page"} if fn in RELIABLE_PAGE_NOVELS else set())
+        if has_paragraphs(text):
+            need.add("paragraph")
+            with_paragraphs += 1
+        elif "paragraph" in levels:
+            missing_levels.append(f"{fn} (paragraph level without surviving paragraphs)")
         if need - levels:
             missing_levels.append(f"{fn} (missing {sorted(need - levels)})")
     print(f"\nnovels analyzed: {len(analyzed)}; missing granularity levels: {len(missing_levels)}")

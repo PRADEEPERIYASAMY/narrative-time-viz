@@ -26,19 +26,35 @@ analysis-eligible novels (some source files flattened them -- Wuthering
 Heights has 34 blank-line blocks for 34 chapters). A fixed sentence window
 means the same thing in every novel.
 
+Weeks 9-10 adds the paragraph as a fifth level, the alternative path the
+passage replaced: the author's own paragraphs, measured only in novels
+whose blank-line blocks are paragraphs (median block <= 750 words -- the
+64), NULL elsewhere. The two middle scales can then be compared on the same
+events (src/compare_middle_scale.py).
+
 Visibility is NULL, not 0, when a level can't be measured (no page markers,
 or fewer than MIN_UNITS units to compute a z-score against), so "washed
 out" and "not measurable" stay distinguishable.
 """
+import re
 from bisect import bisect_left, bisect_right
 from dataclasses import dataclass, field
-from statistics import mean, pstdev
+from statistics import mean, median, pstdev
 
 from .tense_tagger import TENSE_FUTURE_IN_PAST, TENSE_PAST_PERFECT
 
-LEVELS = ("word", "passage", "scene", "page")
+LEVELS = ("word", "paragraph", "passage", "scene", "page")
 WORD_BIN = 25
 PASSAGE_SENTENCES = 10
+# a novel's blank-line blocks count as paragraphs when their median is at
+# most this long; above it they are chapters or sections the source
+# flattened (Wuthering Heights: median 3,233 words). 750 reproduces the 64
+# of 91 the Weeks 7-8 report counted. STRICT_PARAGRAPH_MEDIAN_WORDS marks
+# the novels whose blocks are unmistakably paragraphs (56 of the 64); the
+# other 8 have diary-entry- or section-length blocks (Dracula: 409).
+PARAGRAPH_MEDIAN_WORDS = 750
+STRICT_PARAGRAPH_MEDIAN_WORDS = 200
+_BLANK_LINE = re.compile(r"\n\s*\n")
 Z_VISIBLE = 1.0
 MIN_UNITS = 5
 
@@ -74,6 +90,27 @@ def passage_units(sentence_word_starts: list[int], total_words: int) -> list[dic
     starts = sentence_word_starts[::PASSAGE_SENTENCES]
     return [{"start_word": s, "end_word": starts[i + 1] if i + 1 < len(starts) else total_words,
              "ref_id": None} for i, s in enumerate(starts)]
+
+
+def paragraph_blocks(cleaned_text: str) -> list[tuple[int, int]]:
+    """(char offset, word count) of every non-empty blank-line block."""
+    bounds = [0] + [x for m in _BLANK_LINE.finditer(cleaned_text) for x in (m.start(), m.end())]
+    bounds.append(len(cleaned_text))
+    out = []
+    for lo, hi in zip(bounds[::2], bounds[1::2]):
+        block = cleaned_text[lo:hi]
+        if block.strip():
+            out.append((lo + len(block) - len(block.lstrip()), len(block.split())))
+    return out
+
+
+def median_block_words(cleaned_text: str) -> float:
+    blocks = paragraph_blocks(cleaned_text)
+    return median(w for _, w in blocks) if blocks else 0.0
+
+
+def has_paragraphs(cleaned_text: str) -> bool:
+    return 0 < median_block_words(cleaned_text) <= PARAGRAPH_MEDIAN_WORDS
 
 
 def span_units(spans: list[tuple]) -> list[dict]:
