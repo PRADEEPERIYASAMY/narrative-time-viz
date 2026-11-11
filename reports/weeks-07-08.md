@@ -363,7 +363,7 @@ with sentence length controlled and survives Bonferroni correction
 
 ### 1. The flashback that disappears: what scale does to narrative time
 
-![Share of events still visible at each scale](figures/phase2/corpus_granularity_survival.png)
+![Share of events still visible at each scale](figures/weeks-07-08/corpus_granularity_survival.png)
 
 | Signal (events) | Word | Passage | Scene | Page* |
 |---|---|---|---|---|
@@ -419,9 +419,9 @@ story. *Fleetwood*, a memoir retrospective throughout, loses the most at
 passage scale (53%): when everything looks back, a single look back stands
 out less.
 
-![Wuthering Heights: retrospection at three scales](figures/phase2/1847_granularity.png)
+![Wuthering Heights: retrospection at three scales](figures/weeks-07-08/1847_granularity.png)
 
-![Fleetwood: retrospection at four scales, including the printed page](figures/phase2/1805_granularity.png)
+![Fleetwood: retrospection at four scales, including the printed page](figures/weeks-07-08/1805_granularity.png)
 
 ### 2. Retrospection across the century: the grammar holds steady, the signposting grows
 
@@ -439,7 +439,7 @@ contain some past-perfect clause. With sentence length controlled, the
 trend either way. The engine shows Victorian sentences shortening, not
 retrospection receding.
 
-![The sentence-length confound](figures/phase2/corpus_confound.png)
+![The sentence-length confound](figures/weeks-07-08/corpus_confound.png)
 
 What does change, robustly, is how often retrospection is *announced*:
 
@@ -462,7 +462,7 @@ narrator's grammar did silently. The leaders, *Barry Lyndon* (Thackeray,
 Kensington* (Ritchie, 1873), and *Wives and Daughters* (Gaskell, 1864),
 would make a good starting set for testing it.
 
-![Retrospection across the century](figures/phase2/corpus_decade_trends.png)
+![Retrospection across the century](figures/weeks-07-08/corpus_decade_trends.png)
 
 ### 3. "Suddenly": the century's grammar of abruptness
 
@@ -489,7 +489,7 @@ an event that breaks into continuous time rather than a skip across it, so
 this is a change in how narrative time *ruptures*, not in how it moves.
 It's worth reading closely in the supernatural fiction specifically.
 
-![Explicit temporal markers across the century](figures/phase2/corpus_decade_markers.png)
+![Explicit temporal markers across the century](figures/weeks-07-08/corpus_decade_markers.png)
 
 ### 4. Clock time enters the novel (suggestive)
 
@@ -540,9 +540,9 @@ a heuristic that has no notion of genre:
   o'clock now." The one stretch of the book that takes time as its subject
   is the one place clock time appears.
 
-![Alice: temporal event timeline](figures/phase2/1865_timeline.png)
+![Alice: temporal event timeline](figures/weeks-07-08/1865_timeline.png)
 
-![Dracula: temporal event timeline](figures/phase2/1897_timeline.png)
+![Dracula: temporal event timeline](figures/weeks-07-08/1897_timeline.png)
 
 These are validations as much as findings. They show the measurements
 track real features of the texts, which is what licenses reading the
@@ -562,7 +562,7 @@ close reading, not results. A null result here is useful in itself:
 whatever distinguishes these novels by author gender isn't visible at the
 level of tense and temporal marking.
 
-![By author gender](figures/phase2/corpus_gender.png)
+![By author gender](figures/weeks-07-08/corpus_gender.png)
 
 ### 7. The flash-forward signal measures prospection, not prolepsis
 
