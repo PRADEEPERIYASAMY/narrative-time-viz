@@ -16,13 +16,19 @@ supplemental cue taxonomy (`src/temporal/cue_taxonomy.csv`), scholarly
 apparatus is stripped from the corpus, and scene duration labels require
 positive evidence rather than defaulting to "continuous".
 `verify_phase2.py --require-full` passes, and the initial visualizations
-for the 5 test novels are in `reports/figures/phase2/`. See the biweekly
-reports for the full write-up (architecture diagrams, corpus-wide analysis,
-findings, and open items for review):
+for the 5 test novels are in `reports/figures/phase2/`. Since Weeks 9-10
+the granularity comparison also has the author's own paragraph as a fifth
+scale (in the 64 novels whose paragraphs survive), tested against the
+10-sentence passage. Phase 3 (visualization suite) is under way: an
+interactive Plotly Dash dashboard (`python -m src.dashboard`) shows the
+timeline view for any of the 91 novels, with SVG/PDF/PNG export. See the
+biweekly reports for the full write-up (architecture diagrams, corpus-wide
+analysis, findings, and open items for review):
 [`reports/weeks-01-02.md`](reports/weeks-01-02.md),
 [`reports/weeks-03-04.md`](reports/weeks-03-04.md),
 [`reports/weeks-05-06.md`](reports/weeks-05-06.md),
-[`reports/weeks-07-08.md`](reports/weeks-07-08.md).
+[`reports/weeks-07-08.md`](reports/weeks-07-08.md),
+[`reports/weeks-09-10.md`](reports/weeks-09-10.md).
 
 ## Corpus source correction
 
@@ -76,8 +82,11 @@ src/
                            never a default) and a lower bound on the story
                            time the scene's cues state
     flashback_detector.py  flashback / flash-forward, 2-of-3 SOW signals
-    granularity.py         4 temporal signals x 4 scales (word, passage, scene,
-                           page) and, per event, visible or washed out
+    granularity.py         4 temporal signals x 5 scales (word, paragraph,
+                           passage, scene, page) and, per event, visible or
+                           washed out; paragraph only where the source kept
+                           paragraphs (64 novels), page only where pagination
+                           is reliable
     event_log.py           writes the temporal_events table
     confidence.py           shared confidence-score clamp helper
   analyze_temporal.py CLI: runs every Phase 2 detector + the granularity
@@ -87,19 +96,38 @@ src/
                        across the century (sentence-length controlled),
                        author gender, threshold re-check
   plot_phase2.py      Phase 2 initial visualizations + corpus figures
+  compare_middle_scale.py  the paragraph-vs-passage study: the author's
+                       paragraphs as the middle scale in the 64 novels that
+                       keep them, against the 10-sentence passage
+  viz/                 Phase 3 visualization layer:
+    data.py               reads one novel's scenes, pages, and labelled
+                           events from corpus.db (read-only)
+    timeline.py           the SOW's timeline view (Plotly)
+    style.py              the shared, validated palette
+  dashboard.py        Phase 3 interactive dashboard (Plotly Dash): pick a
+                       novel, see its timeline, zoom/pan, export SVG/PDF/PNG
+  export_figures.py   batch publication export -> reports/figures/phase3/
 tests/
   test_preprocess.py  unit tests against fixtures matching the real file format
   test_temporal.py    unit tests for every Phase 2 detector and the
                        granularity comparison
+  test_viz.py         unit tests for the Phase 3 data layer and timeline
 reports/
   weeks-01-02.md       biweekly report: Phase 1 pipeline, corpus-wide analysis
   weeks-03-04.md       biweekly report: GitHub publish, Phase 2 kickoff
   weeks-05-06.md       biweekly report: Phase 2 detectors + temporal event log
   weeks-07-08.md       biweekly report: Phase 2 complete, first findings
+  weeks-09-10.md       biweekly report: Shawna Ross's cue taxonomy, apparatus
+                        removal, two findings revised, the paragraph-vs-passage
+                        study, Phase 3 dashboard + timeline view
   data/novel_stats.csv full per-novel data (all 100 novels, all extracted fields)
   data/temporal_novel_stats.csv     per-novel temporal measures (91 novels)
   data/temporal_corpus_summary.json corpus-level temporal findings
-  figures/phase2/      initial visualizations (PNG) + interactive/ (HTML)
+  data/middle_scale_comparison.json paragraph vs. passage results
+  data/middle_scale_by_novel.csv    the same, per novel
+  figures/phase2/      current Phase 2 figures (PNG) + interactive/ (HTML)
+  figures/phase3/      dashboard screenshot + timeline exports (SVG/PDF/PNG)
+  figures/weeks-NN-NN/ each report's own figures, as of its run
 ```
 
 ## Corpus format (verified against real downloaded files)
@@ -176,6 +204,7 @@ python -m src.verify_phase2 --require-full
 # 3. corpus-level findings and figures
 python -m src.analyze_temporal_corpus   # -> reports/data/temporal_*
 python -m src.plot_phase2               # -> reports/figures/phase2/
+python -m src.compare_middle_scale      # paragraph vs. passage -> reports/data/middle_scale_*
 
 # other scopes: one novel, or the first N eligible novels
 python -m src.analyze_temporal --novel 1847.txt
@@ -193,12 +222,29 @@ The 9 single-volume novels (`analysis_eligible = 0`) are skipped unless
   such as "every Sunday", "used to", "of an evening"): their story-time
   span is unknown but likely more than one occasion.
 - `granularity_units`: retrospection, prospection, marker density, and
-  tense churn, measured per 25-word bin, 10-sentence passage, scene, and
-  original page.
+  tense churn, measured per 25-word bin, author's paragraph (where the
+  source kept paragraphs), 10-sentence passage, scene, and original page.
 - `granularity_comparison`: for every event, whether it still stands out at
   each of those scales, or was washed out.
 
 Re-running a novel replaces its previous results.
+
+## Running Phase 3
+
+```bash
+# the interactive dashboard -- then open http://127.0.0.1:8050
+python -m src.dashboard
+
+# publication figures (SVG, PDF, PNG) -> reports/figures/phase3/
+python -m src.export_figures                        # the 5 test novels
+python -m src.export_figures --novel 1862.txt       # any novel, repeatable
+python -m src.export_figures --all                  # all 91
+```
+
+The dashboard reads `corpus.db` read-only. Pick a novel, choose which event
+lanes to show and the flashback confidence threshold, zoom by dragging,
+double-click to reset, and export the current view at publication size.
+Static export uses Kaleido, which needs a local Chrome or Edge.
 
 To change the temporal vocabulary, edit `src/temporal/cue_taxonomy.csv`:
 `match` is `phrase` (whole-word, case-insensitive), `phrase_cs`
@@ -251,7 +297,7 @@ re-run steps 1-3.
 - [x] `python -m src.build_pipeline --limit 10` then `python -m src.verify` passes
 - [x] `python -m src.build_pipeline` (full run) then `python -m src.verify` passes
 - [x] `corpus.db` contains `novels`, `divisions`, `pages`, `sentences`, `qc_log` populated
-- [x] `pytest tests/` green (52/52 — 9 Phase 1 + 43 Phase 2 tests)
+- [x] `pytest tests/` green (60/60 — 9 Phase 1 + 46 Phase 2 + 5 Phase 3 tests)
 
 ## Acceptance checklist (SOW Phase 2)
 
@@ -260,11 +306,24 @@ re-run steps 1-3.
 - [x] Detects the 4 required feature types: tense shifts, temporal markers,
       scene boundaries, flashbacks/flash-forwards
 - [x] Confidence scoring on every detection
-- [x] Multi-granularity analysis and granularity comparison — word, passage,
-      scene, and page, for every event
+- [x] Multi-granularity analysis and granularity comparison — word, paragraph
+      (where it survives), passage, scene, and page, for every event
 - [x] Working analysis for the 5 test novels, and for all 91 eligible novels —
       `python -m src.verify_phase2 --require-full` passes
 - [x] Initial visualizations for the 5 test novels — `reports/figures/phase2/`
+
+## Acceptance checklist (SOW Phase 3) — in progress
+
+- [x] Interactive dashboard (Plotly Dash): select a novel → see visualizations →
+      zoom/pan → export — `python -m src.dashboard`, all 91 novels
+- [x] Timeline view: scene boundaries, durations, labeled events (flashbacks,
+      temporal jumps) — `src/viz/timeline.py`
+- [x] Export to publication-quality static figures (SVG/PDF) — dashboard
+      buttons and `python -m src.export_figures`
+- [ ] Pace/density plot (narrative time per page vs. story time per page)
+- [ ] Flashback map (flashback/flash-forward annotations over the timeline)
+- [ ] Comparative view, 2-3 novels side by side (SOW: optional)
+- [ ] Publication-quality figures for 5+ novels across all three views
 
 See [`reports/weeks-01-02.md`](reports/weeks-01-02.md) for corpus-wide
 analysis, deviations from the SOW worth flagging to Shawna (page-marker
@@ -276,4 +335,8 @@ detectors, the temporal event log, and how the detections hold up when read
 against the novels themselves; see
 [`reports/weeks-07-08.md`](reports/weeks-07-08.md) for Phase 2's
 completion (multi-granularity comparison, absolute time, the full 91-novel
-run) and the first corpus findings.
+run) and the first corpus findings; see
+[`reports/weeks-09-10.md`](reports/weeks-09-10.md) for Shawna Ross's
+temporal-cue taxonomy, the apparatus removal, the two findings it revised,
+the paragraph-vs-passage study of the middle scale, and the start of
+Phase 3 (dashboard and timeline view).
