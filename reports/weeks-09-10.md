@@ -329,7 +329,7 @@ label has one colour across the reports, the dashboard, and the exports.
 
 ### The dashboard
 
-![The dashboard, showing Wuthering Heights](figures/phase3/dashboard_timeline.png)
+![The dashboard, showing Wuthering Heights](figures/weeks-09-10/dashboard_timeline.png)
 
 ```mermaid
 sequenceDiagram
@@ -373,7 +373,7 @@ length of the telling and the time told, one above the other:
 | flash-forwards | prospective passages at the chosen confidence | right-pointing triangle |
 | flashbacks | retrospective passages at the chosen confidence | left-pointing triangle |
 
-![Lady Audley's Secret: narrative timeline](figures/phase3/1862_timeline.png)
+![Lady Audley's Secret: narrative timeline](figures/weeks-09-10/1862_timeline.png)
 
 Event marks are neutral ink: identity comes from the lane, so the scene
 colours keep a single meaning. Story-time labels are selective (every
