@@ -601,9 +601,6 @@ unmarked.
   any heuristic, and a second annotator for the precision audit.
 - **Phase 4's 5-10 novels.** The publication set above is the proposal;
   Dr. Ross's choice decides it.
-- **Carried forward from Weeks 9-10:** the three borderline apparatus
-  cases, and whether Dr. Ross would like to edit `cue_taxonomy.csv`
-  directly.
 
 ## How to reproduce
 
