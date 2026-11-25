@@ -4,11 +4,15 @@ their duration labels and the story time their cues state), its pages
 where reliable, and its labelled events (flashbacks, flash-forwards,
 forward jumps, absolute time references), all on one axis -- word position
 in the novel, the axis the Phase 2 engine already uses for every event.
+
+load_timeline feeds the timeline view; load_pace the pace/density plot;
+load_flashback_map the flashback map (Weeks 11-12).
 """
 import json
 import re
 import sqlite3
-from bisect import bisect_right
+from bisect import bisect_left, bisect_right
+from collections import Counter
 
 from .. import config
 from ..temporal import scene_duration, temporal_markers
@@ -123,14 +127,21 @@ def _add_story_time(conn, nid: int, scenes: list[dict]) -> None:
     starts = [s["start_word"] for s in scenes]
     dates = [[] for _ in scenes]
     cue_days = [[] for _ in scenes]
+    cues = [Counter() for _ in scenes]  # for labelling the opening scene
     for r in conn.execute(
-            """SELECT gc.word_position, te.detail FROM temporal_events te
+            """SELECT gc.word_position, te.detail, te.duration_modifier FROM temporal_events te
                JOIN granularity_comparison gc ON gc.event_id = te.id
-               WHERE te.novel_id = ? AND te.event_type = 'explicit_marker'""", (nid,)):
+               WHERE te.novel_id = ? AND te.event_type = 'explicit_marker'
+               ORDER BY gc.word_position""", (nid,)):
         i = bisect_right(starts, r["word_position"]) - 1
         if i < 0:
             continue
         d = json.loads(r["detail"])
+        cues[i]["iterative"] += r["duration_modifier"] == "multi-unit"
+        for cat in d["categories"]:
+            cues[i]["jump"] += cat == "forward_jump"
+            cues[i]["sequence"] += cat == "sequence"
+            cues[i]["anchor"] += temporal_markers.CATEGORY_TIER.get(cat) in ("absolute", "position")
         for phrase, cat in zip(d["phrases"], d["categories"]):
             if cat == "calendar_date":
                 # surfaces are stored lowercased; months match case-sensitively
@@ -139,16 +150,78 @@ def _add_story_time(conn, nid: int, scenes: list[dict]) -> None:
             elif cat == "forward_jump":
                 cue_days[i] += [(phrase, m.delta_days) for m in temporal_markers.find_marker_spans(phrase)
                                 if m.delta_days]
-    for s, ds, cues in zip(scenes, dates, cue_days):
+    for s, ds, quantified in zip(scenes, dates, cue_days):
         span = scene_duration.advance_days(min(ds), max(ds)) if len(set(ds)) > 1 else None
         s["dated_span_days"] = span
         s["dated_range"] = (min(ds), max(ds)) if span else None
-        s["cue_days"] = cues
-        total = (span or 0) + sum(d for _, d in cues)
+        s["cue_days"] = quantified
+        total = (span or 0) + sum(d for _, d in quantified)
         s["story_days"] = round(total, 2) if total else None
+
+    # The engine logs a scene's label on its boundary event, and the
+    # opening scene has none. Label it here from its own cues, by the
+    # engine's rule (scene_duration.duration_label).
+    for s, ds, c in zip(scenes, dates, cues):
+        if s["label"] == "opening":
+            advances = scene_duration.date_movements(ds).count("advance")
+            s["label"] = scene_duration.duration_label(c["jump"] + advances, c["iterative"], c["sequence"],
+                                                       c["anchor"])
+            s["label_derived"] = True
 
 
 def page_at(pages: list[tuple], word: int):
     """The original-edition page holding a word position, or None."""
     i = bisect_right([w for w, _ in pages], word) - 1
     return pages[i][1] if i >= 0 else None
+
+
+def _passages(conn, nid: int) -> list[dict]:
+    return [dict(r) for r in conn.execute(
+        """SELECT start_word, end_word, words, retrospection, prospection, marker_density
+           FROM granularity_units WHERE novel_id = ? AND level = 'passage' ORDER BY start_word""", (nid,))]
+
+
+def load_pace(conn, filename: str) -> dict:
+    """The pace/density plot's data: every scene's discourse length and the
+    story time its cues state (from load_timeline), and, per 10-sentence
+    passage, how densely the text marks time and how densely it narrates
+    habitually."""
+    data = load_timeline(conn, filename)
+    nid = conn.execute("SELECT id FROM novels WHERE filename = ?", (filename,)).fetchone()[0]
+    passages = _passages(conn, nid)
+    iterative = sorted(r[0] for r in conn.execute(
+        """SELECT gc.word_position FROM temporal_events te JOIN granularity_comparison gc ON gc.event_id = te.id
+           WHERE te.novel_id = ? AND te.event_type = 'explicit_marker' AND te.duration_modifier = 'multi-unit'""",
+        (nid,)))
+    for p in passages:
+        n = bisect_left(iterative, p["end_word"]) - bisect_left(iterative, p["start_word"])
+        p["iterative_density"] = 1000 * n / p["words"] if p["words"] else None
+    for s in data["scenes"]:
+        s["pace"] = s["story_days"] / (s["words"] / 1000) if s["story_days"] and s["words"] else None
+    data["passages"] = passages
+    return data
+
+
+def load_flashback_map(conn, filename: str) -> dict:
+    """The flashback map's data: every flashback and flash-forward (all
+    confidence levels) with its visibility at each scale, the scenes for
+    context, and per-passage retrospection and prospection."""
+    data = load_timeline(conn, filename)
+    nid = conn.execute("SELECT id FROM novels WHERE filename = ?", (filename,)).fetchone()[0]
+    events = []
+    for r in conn.execute(
+            """SELECT te.event_type, te.confidence, te.detail, gc.word_position, gc.visible_at_word,
+                      gc.visible_at_paragraph, gc.visible_at_passage, gc.visible_at_scene, s.text
+               FROM temporal_events te JOIN granularity_comparison gc ON gc.event_id = te.id
+               LEFT JOIN sentences s ON s.id = te.sentence_id
+               WHERE te.novel_id = ? AND te.event_type IN ('flashback', 'flashforward')
+               ORDER BY gc.word_position""", (nid,)):
+        d = json.loads(r["detail"]) if r["detail"] else {}
+        events.append({"kind": r["event_type"], "word": r["word_position"], "confidence": r["confidence"],
+                       "cues": ", ".join(d.get("cue_phrases", [])) or "no cue phrase",
+                       "visible": {lv: r[f"visible_at_{lv}"] for lv in ("word", "paragraph", "passage", "scene")},
+                       "excerpt": _excerpt(r["text"])})
+    data["flash_events"] = events
+    data["passages"] = _passages(conn, nid)
+    data["has_paragraphs"] = any(e["visible"]["paragraph"] is not None for e in events)
+    return data
