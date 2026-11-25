@@ -385,3 +385,20 @@ def test_paragraph_level_is_null_where_paragraphs_are_lost():
     word = granularity.index_units(granularity.measure(granularity.word_units(1000), obs))
     cmp = granularity.compare("flashback", 510, {"word": word, "paragraph": None})
     assert cmp["visible_at_word"] == 1 and cmp["visible_at_paragraph"] is None
+
+
+# --- precision audit fixes (Weeks 11-12) --------------------------------------
+
+def test_audit_false_positives_are_not_cues():
+    # every sentence here was a false positive in the hand-checked audit
+    for text in ("He has been too long used to stimulants.", "You will grow used to it.",
+                 "He's used to it.", "He ain't what he used to be.", "A more than usually severe winter.",
+                 "The spring of her mind is destroyed.", "A rock covered even in spring-tides.",
+                 "To preserve the autumn of her days from indigence."):
+        assert _cats(text) == [], text
+
+
+def test_audit_keeps_true_habits_and_seasons():
+    assert _cats("She used to read to me; he usually wore it.") == [
+        ("used to", "frequency"), ("usually", "frequency")]
+    assert [c for _, c in _cats("In the spring of the year, and the summer of 1801.")] == ["seasonal", "seasonal"]
