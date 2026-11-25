@@ -19,16 +19,21 @@ positive evidence rather than defaulting to "continuous".
 for the 5 test novels are in `reports/figures/phase2/`. Since Weeks 9-10
 the granularity comparison also has the author's own paragraph as a fifth
 scale (in the 64 novels whose paragraphs survive), tested against the
-10-sentence passage. Phase 3 (visualization suite) is under way: an
-interactive Plotly Dash dashboard (`python -m src.dashboard`) shows the
-timeline view for any of the 91 novels, with SVG/PDF/PNG export. See the
+10-sentence passage. Phase 3 (visualization suite) is complete: an
+interactive Plotly Dash dashboard (`python -m src.dashboard`) shows all
+three of the SOW's views (timeline, pace/density, flashback map) for any of
+the 91 novels, with SVG/PDF/PNG export, and publication figures for 9
+novels are in `reports/figures/phase3/`. The gender difference in
+iterative and seasonal time (Weeks 9-10) has been tested to journal
+standard (`python -m src.analyze_gender_time`). See the
 biweekly reports for the full write-up (architecture diagrams, corpus-wide
 analysis, findings, and open items for review):
 [`reports/weeks-01-02.md`](reports/weeks-01-02.md),
 [`reports/weeks-03-04.md`](reports/weeks-03-04.md),
 [`reports/weeks-05-06.md`](reports/weeks-05-06.md),
 [`reports/weeks-07-08.md`](reports/weeks-07-08.md),
-[`reports/weeks-09-10.md`](reports/weeks-09-10.md).
+[`reports/weeks-09-10.md`](reports/weeks-09-10.md),
+[`reports/weeks-11-12.md`](reports/weeks-11-12.md).
 
 ## Corpus source correction
 
@@ -103,15 +108,24 @@ src/
     data.py               reads one novel's scenes, pages, and labelled
                            events from corpus.db (read-only)
     timeline.py           the SOW's timeline view (Plotly)
+    pace.py               the SOW's pace/density plot: story time per
+                           1,000 words, scene by scene, + cue densities
+    flashback_map.py      the SOW's flashback map: flashback / flash-forward
+                           density and events, filled or hollow by whether
+                           they survive at a chosen scale
     style.py              the shared, validated palette
   dashboard.py        Phase 3 interactive dashboard (Plotly Dash): pick a
-                       novel, see its timeline, zoom/pan, export SVG/PDF/PNG
+                       novel and a view (3 tabs), zoom/pan, export SVG/PDF/PNG
   export_figures.py   batch publication export -> reports/figures/phase3/
+  analyze_gender_time.py  the gender difference in iterative and seasonal
+                       time, tested to journal standard (effect sizes,
+                       count models with controls, permutation, stability,
+                       the precision audit)
 tests/
   test_preprocess.py  unit tests against fixtures matching the real file format
   test_temporal.py    unit tests for every Phase 2 detector and the
                        granularity comparison
-  test_viz.py         unit tests for the Phase 3 data layer and timeline
+  test_viz.py         unit tests for the Phase 3 data layer and all three views
 reports/
   weeks-01-02.md       biweekly report: Phase 1 pipeline, corpus-wide analysis
   weeks-03-04.md       biweekly report: GitHub publish, Phase 2 kickoff
@@ -120,13 +134,18 @@ reports/
   weeks-09-10.md       biweekly report: Shawna Ross's cue taxonomy, apparatus
                         removal, two findings revised, the paragraph-vs-passage
                         study, Phase 3 dashboard + timeline view
+  weeks-11-12.md       biweekly report: Phase 3 complete (pace/density plot,
+                        flashback map, publication figures), the gender
+                        finding tested to journal standard
   data/novel_stats.csv full per-novel data (all 100 novels, all extracted fields)
   data/temporal_novel_stats.csv     per-novel temporal measures (91 novels)
   data/temporal_corpus_summary.json corpus-level temporal findings
   data/middle_scale_comparison.json paragraph vs. passage results
   data/middle_scale_by_novel.csv    the same, per novel
   figures/phase2/      current Phase 2 figures (PNG) + interactive/ (HTML)
-  figures/phase3/      dashboard screenshot + timeline exports (SVG/PDF/PNG)
+  data/gender_time*.{json,csv}      the gender analysis, overall and per novel
+  data/gender_precision_audit.csv   130 hand-checked cue hits behind it
+  figures/phase3/      dashboard screenshots + exports of all three views (SVG/PDF/PNG)
   figures/weeks-NN-NN/ each report's own figures, as of its run
 ```
 
@@ -205,6 +224,7 @@ python -m src.verify_phase2 --require-full
 python -m src.analyze_temporal_corpus   # -> reports/data/temporal_*
 python -m src.plot_phase2               # -> reports/figures/phase2/
 python -m src.compare_middle_scale      # paragraph vs. passage -> reports/data/middle_scale_*
+python -m src.analyze_gender_time       # gender and iterative/seasonal time -> reports/data/gender_time*
 
 # other scopes: one novel, or the first N eligible novels
 python -m src.analyze_temporal --novel 1847.txt
@@ -235,16 +255,18 @@ Re-running a novel replaces its previous results.
 # the interactive dashboard -- then open http://127.0.0.1:8050
 python -m src.dashboard
 
-# publication figures (SVG, PDF, PNG) -> reports/figures/phase3/
-python -m src.export_figures                        # the 5 test novels
+# publication figures (SVG, PDF, PNG), all three views -> reports/figures/phase3/
+python -m src.export_figures                        # the publication set (9 novels)
 python -m src.export_figures --novel 1862.txt       # any novel, repeatable
 python -m src.export_figures --all                  # all 91
 ```
 
-The dashboard reads `corpus.db` read-only. Pick a novel, choose which event
-lanes to show and the flashback confidence threshold, zoom by dragging,
-double-click to reset, and export the current view at publication size.
-Static export uses Kaleido, which needs a local Chrome or Edge.
+The dashboard reads `corpus.db` read-only. Pick a novel and a view
+(timeline, pace & density, flashback map), set the flashback confidence
+threshold, the timeline's event lanes, or the scale the flashback map judges
+survival at; zoom by dragging, double-click to reset, and export the current
+view at publication size. Static export uses Kaleido, which needs a local
+Chrome or Edge.
 
 To change the temporal vocabulary, edit `src/temporal/cue_taxonomy.csv`:
 `match` is `phrase` (whole-word, case-insensitive), `phrase_cs`
@@ -297,7 +319,7 @@ re-run steps 1-3.
 - [x] `python -m src.build_pipeline --limit 10` then `python -m src.verify` passes
 - [x] `python -m src.build_pipeline` (full run) then `python -m src.verify` passes
 - [x] `corpus.db` contains `novels`, `divisions`, `pages`, `sentences`, `qc_log` populated
-- [x] `pytest tests/` green (60/60 — 9 Phase 1 + 46 Phase 2 + 5 Phase 3 tests)
+- [x] `pytest tests/` green (65/65 — 9 Phase 1 + 48 Phase 2 + 8 Phase 3 tests)
 
 ## Acceptance checklist (SOW Phase 2)
 
@@ -312,18 +334,23 @@ re-run steps 1-3.
       `python -m src.verify_phase2 --require-full` passes
 - [x] Initial visualizations for the 5 test novels — `reports/figures/phase2/`
 
-## Acceptance checklist (SOW Phase 3) — in progress
+## Acceptance checklist (SOW Phase 3)
 
 - [x] Interactive dashboard (Plotly Dash): select a novel → see visualizations →
-      zoom/pan → export — `python -m src.dashboard`, all 91 novels
+      zoom/pan → export — `python -m src.dashboard`, all 91 novels, 3 views
 - [x] Timeline view: scene boundaries, durations, labeled events (flashbacks,
       temporal jumps) — `src/viz/timeline.py`
+- [x] Pace/density plot: story time per 1,000 words against discourse, scene
+      by scene, with cue densities — `src/viz/pace.py`
+- [x] Flashback map: flashback/flash-forward annotations with clear visual
+      distinction — `src/viz/flashback_map.py`
 - [x] Export to publication-quality static figures (SVG/PDF) — dashboard
       buttons and `python -m src.export_figures`
-- [ ] Pace/density plot (narrative time per page vs. story time per page)
-- [ ] Flashback map (flashback/flash-forward annotations over the timeline)
-- [ ] Comparative view, 2-3 novels side by side (SOW: optional)
-- [ ] Publication-quality figures for 5+ novels across all three views
+- [x] Publication-quality figures for 5+ novels — all three views for 9
+      novels in `reports/figures/phase3/`
+- [x] Screenshots and exports for teaching and research — `reports/figures/phase3/`
+- Comparative view (SOW: optional) — dropped at the Weeks 11-12 supervisor
+  meeting
 
 See [`reports/weeks-01-02.md`](reports/weeks-01-02.md) for corpus-wide
 analysis, deviations from the SOW worth flagging to Shawna (page-marker
@@ -339,4 +366,7 @@ run) and the first corpus findings; see
 [`reports/weeks-09-10.md`](reports/weeks-09-10.md) for Shawna Ross's
 temporal-cue taxonomy, the apparatus removal, the two findings it revised,
 the paragraph-vs-passage study of the middle scale, and the start of
-Phase 3 (dashboard and timeline view).
+Phase 3 (dashboard and timeline view); see
+[`reports/weeks-11-12.md`](reports/weeks-11-12.md) for Phase 3's completion
+(pace/density plot, flashback map, publication figures) and the gender
+finding tested to journal standard.
